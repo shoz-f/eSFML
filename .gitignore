@@ -22,3 +22,7 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 esfml-*.tar
 
+# Custom setting
+x64/
+*.ilk
+*.filters
