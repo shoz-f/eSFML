@@ -174,12 +174,9 @@ defmodule Main do
 
     overrun? = &Judge.overrun?(&1, Stage.border(s))
     
-    loop(400, s, p, overrun?)
+    loop(600, s, p, overrun?)
   end
  
-  @doc """
-  メイン・ループ
-  """
   defp loop(0, _s, _p, _overrun?) do
   end
 
