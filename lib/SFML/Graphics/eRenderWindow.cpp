@@ -209,11 +209,6 @@ ERL_NIF_TERM sfRenderWindowGetSize(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM enifMakeBoolean(ErlNifEnv* env, bool cond)
-{
-    return enif_make_atom(env, (cond) ? "true" : "false");
-}
-
 ERL_NIF_TERM sfRenderWindowIsOpen(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     ResRenderWindow res(env);

@@ -22,8 +22,6 @@
 /***** TYPE *****/
 
 /***** MACRO *****/
-#define NIL(env) enif_make_atom(env, "nil")
-
 
 /***** EXPORT VARIABLE *****/
 

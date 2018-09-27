@@ -15,7 +15,6 @@
 
 /***** INCLUDE *****/
 #include "stdafx.h"
-#include "enifUserArg.h"
 #include "eTexture.h"
 #include "eSprite.h"
 
@@ -32,6 +31,59 @@
 /***** PRIVATE VARIABLE *****/
 
 /***** PRIVATE FUNCTION *****/
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* Constructor
+* @par description
+*   instantiate the object
+**/
+/*************************************************************************{{{*/
+eSprite::eSprite()
+:mHaveTexture(NULL)
+{
+    // empty
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* Destructor
+* @par description
+*   destroy the object
+**/
+/*************************************************************************{{{*/
+eSprite::~eSprite()
+{
+    releaseTexture();
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* Keep Texture resource
+* @par description
+*   increment reference counter
+**/
+/*************************************************************************{{{*/
+void eSprite::keepTexture(void* r)
+{
+    enif_keep_resource(r);
+    mHaveTexture = r;
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* Release Texture resource
+* @par description
+*   decrement reference counter
+**/
+/*************************************************************************{{{*/
+void eSprite::releaseTexture()
+{
+    enif_release_resource(mHaveTexture);
+    mHaveTexture = NULL;
+}
+
+
 
 /***  Module Header  ******************************************************}}}*/
 /**

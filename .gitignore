@@ -23,6 +23,8 @@ erl_crash.dump
 esfml-*.tar
 
 # Custom setting
+.vs/
 x64/
 *.ilk
 *.filters
+*.VC*

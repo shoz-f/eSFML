@@ -1,8 +1,7 @@
 #pragma once
 
 #include <SFML/System/Clock.hpp>
-#include <erl_nif.h>
-#include "NifRes.h"
+#include "ErlNifEx.h"
 
 typedef NifRes<sf::Clock> ResClock;
 

@@ -15,7 +15,6 @@
 
 /***** INCLUDE *****/
 #include "stdafx.h"
-#include "enifUserArg.h"
 #include "eTexture.h"
 
 /***** CONSTANT *****/
