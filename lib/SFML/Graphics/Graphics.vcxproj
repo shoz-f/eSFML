@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;GRAPHICS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ERL_INCLUDE_PATH);$(SFML)\include;$(SolutionDir)\misc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ERL_INCLUDE_PATH);$(SFML)\include;$(SolutionDir)System;$(SolutionDir)misc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +151,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\System\EventFlag.hpp" />
+    <ClInclude Include="..\System\Win32\EventFlagImpl.hpp" />
     <ClInclude Include="eCircleShape.h" />
     <ClInclude Include="eColor.h" />
     <ClInclude Include="eDrawable.h" />
@@ -161,6 +163,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\System\EventFlag.cpp" />
+    <ClCompile Include="..\System\Win32\EventFlagImpl.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

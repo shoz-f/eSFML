@@ -43,13 +43,13 @@ ErlNifResourceType* ResTexture::_ResType;
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfTextureLoadFromFile(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    char fname[256];
-    if (!enif_get_string(env, argv[0], fname, sizeof(fname), ERL_NIF_LATIN1)) {
+    ErlNifBinary bin;
+    if (!enif_inspect_binary(env, argv[0], &bin)) {
         return enif_make_badarg(env);
     }
+    std::string fname((const char*)bin.data, bin.size);
 
     ResTexture res(env);
-
     if (!res.Create()) {
         return enif_make_badarg(env);
     }

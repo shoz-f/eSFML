@@ -39,22 +39,22 @@ public:
 
     //ACTION:
 public:
-    void keepTexture(void* r);
-    void releaseTexture();
+    void keepTextureRes(void* r);
+    void releaseTextureRes();
 
     //ACCESSOR:
 
     //INQUIRY:
+    void* getTextureRes();
 
     //ATTRIBUTE:
 protected:
-    void* mHaveTexture;
+    void* mTextrueRes;
 };
 
 typedef NifResChild<eSprite, ResDrawable> ResSprite;
 
 /*** MACRO ***/
-#define DECL_NIF(name)  ERL_NIF_TERM name(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /*** IMPORT FUNCTION ***/
 
@@ -62,8 +62,10 @@ typedef NifResChild<eSprite, ResDrawable> ResSprite;
 
 /*** EXPORT FUNCTION ***/
 ERL_NIF_TERM sfSpriteCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteClone);
 ERL_NIF_TERM sfSpriteSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfSpriteSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteGetTextureRect);
 
 ERL_NIF_TERM sfSpriteGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfSpriteSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
@@ -73,6 +75,9 @@ ERL_NIF_TERM sfSpriteSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 
 ERL_NIF_TERM sfSpriteGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfSpriteSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+
+DECL_NIF(sfSpriteGetColor);
+DECL_NIF(sfSpriteSetColor);
 
 ERL_NIF_TERM sfSpriteMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfSpriteRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
