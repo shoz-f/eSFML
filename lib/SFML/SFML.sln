@@ -13,6 +13,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "System", "System\System.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Audio", "Audio\Audio.vcxproj", "{3BA1FBBA-7C9F-4C53-9E9A-67C197ECBAD9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2BE6AB1-A3D0-4068-9506-BF3E15DD7A46}"
+	ProjectSection(SolutionItems) = preProject
+		misc\ErlNifEx.h = misc\ErlNifEx.h
+		misc\NifRes.h = misc\NifRes.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

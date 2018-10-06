@@ -1,5 +1,6 @@
 // dllmain.cpp : DLL アプリケーションのエントリ ポイントを定義します。
 #include "stdafx.h"
+#include <erl_nif.h>
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -12,8 +13,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
-		break;
+	    break;
 	}
 	return TRUE;
 }
-

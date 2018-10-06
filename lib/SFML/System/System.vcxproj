@@ -151,8 +151,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="eClock.h" />
+    <ClInclude Include="EventFlag.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Win32\EventFlagImpl.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -170,8 +173,10 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="eClock.cpp" />
+    <ClCompile Include="EventFlag.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="eSystemNIF.cpp" />
+    <ClCompile Include="Win32\EventFlagImpl.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

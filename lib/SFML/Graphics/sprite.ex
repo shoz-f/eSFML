@@ -2,14 +2,18 @@ defmodule SFML.Graphics.Sprite do
   alias SFML.Graphics.NIF
 
   defdelegate create(texture),           to: NIF, as: :sprite_create
+  defdelegate clone(texture),            to: NIF, as: :sprite_clone
   defdelegate set_texture(s, texture),   to: NIF, as: :sprite_set_texture
   defdelegate set_texture_rect(s, rect), to: NIF, as: :sprite_set_texture_rect
+  defdelegate get_texture_rect(s),       to: NIF, as: :sprite_get_texture_rect
   defdelegate get_position(s),           to: NIF, as: :sprite_get_position
   defdelegate set_position(s, pos),      to: NIF, as: :sprite_set_position
   defdelegate get_rotation(s),           to: NIF, as: :sprite_get_rotation
   defdelegate set_rotation(s, angle),    to: NIF, as: :sprite_set_rotation
   defdelegate get_scale(s),              to: NIF, as: :sprite_get_scale
   defdelegate set_scale(s, factors),     to: NIF, as: :sprite_set_scale
+  defdelegate get_color(s),              to: NIF, as: :sprite_get_color
+  defdelegate set_color(s, color),       to: NIF, as: :sprite_set_color
   defdelegate move(s, delta),            to: NIF, as: :sprite_move
   defdelegate rotate(s, angle),          to: NIF, as: :sprite_rotate
   defdelegate scale(s, factor),          to: NIF, as: :sprite_scale

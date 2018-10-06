@@ -1,17 +1,17 @@
 alias SFML.Graphics.{RenderWindow,Sprite,Texture}
 alias SFML.System.{Clock,Vector2}
 
-defmodule Penguin do
+defmodule Actor do
   @moduledoc """
-  描画オブジェクト:ペンギン
+  描画オブジェクト
   """
-  defstruct sprite: nil, velocity: [0.0, 0.0]
+  defstruct sprite: nil, velocity: [0.0, 0.0], color: nil
   
   @doc """
   オブジェクトを作成する
   """
   def create(t, pos, [vx,_] = v) do
-    %Penguin{
+    %Actor{
       sprite:   Sprite.create(t)
                 |> Sprite.set_position(pos)
                 |> (&if vx < 0 do Sprite.flip(&1) else &1 end).(),
@@ -20,9 +20,35 @@ defmodule Penguin do
   end
 
   @doc """
+  オブジェクトを複製する
+  """
+  def clone(org, opt) do
+    with color = opt[:color],
+      [cvx,_] = v = opt[:velocity] || org.velocity,
+      [ovx,_] = org.velocity,
+      flip?   = ovx*cvx < 0.0
+    do
+      %Actor{
+        sprite:   Sprite.clone(org.sprite)
+                  |> (&if flip? do Sprite.flip(&1) else &1 end).()
+                  |> (&if color do Sprite.set_color(&1, color) else &1 end).(),
+        velocity: v
+      }
+    end
+  end
+
+  @doc """
+  オブジェクトの速度をvに変更する
+  """
+  def set_velocity(%Actor{} = p, [vx,_] = v) do
+    if vx < 0 do Sprite.flip(p.sprite) end
+    %Actor{p | velocity: v}
+  end
+
+  @doc """
   オブジェクトをvelocityの方向に移動させる
   """
-  def walk(%Penguin{sprite: s, velocity: v} = p, time) do
+  def walk(%Actor{sprite: s, velocity: v} = p, time) do
     Sprite.move(s, Vector2.scale(v, time))
     p
   end
@@ -30,7 +56,7 @@ defmodule Penguin do
   @doc """
   オブジェクトをstepだけ後戻りさせる
   """
-  def goback(%Penguin{sprite: s, velocity: v} = p, step) do
+  def goback(%Actor{sprite: s, velocity: v} = p, step) do
     Sprite.move(s, Vector2.scale(v, -step))
     p
   end
@@ -38,22 +64,22 @@ defmodule Penguin do
   @doc """
   テクスチャと左右の動きを反転させる。
   """
-  def flip(%Penguin{sprite: s, velocity: [x, y]} = p) do
+  def flip(%Actor{sprite: s, velocity: [x, y]} = p) do
     Sprite.flip(s)
-    %Penguin{p | velocity: [-x, y]}
+    %Actor{p | velocity: [-x, y]}
   end
 
   @doc """
   上下の動きを反転させる
   """
-  def flop(%Penguin{velocity: [x, y]} = p) do
-    %Penguin{p | velocity: [x, -y]}
+  def flop(%Actor{velocity: [x, y]} = p) do
+    %Actor{p | velocity: [x, -y]}
   end
   
   @doc """
   オブジェクトの状態・動きを更新する
   """
-  def update(%Penguin{} = p, time, overrun?) do
+  def update(%Actor{} = p, time, overrun?) do
     walk(p, time)
     case overrun?.(p) do
       {:inside, _} -> p
@@ -78,9 +104,10 @@ defmodule Stage do
   @doc """
   ステージを作成
   """
-  def create([width, height], title, color) do
+  def create([_width, _height] = size, title, color) do
     %Stage{
-      win: RenderWindow.create(width, height, title),
+      win: RenderWindow.create(size, title),
+#           |> RenderWindow.set_framerate_limit(60),
       bg:  color
     }
   end
@@ -90,6 +117,10 @@ defmodule Stage do
   """
   def destroy(%Stage{win: w}) do
     RenderWindow.destroy(w)
+  end
+
+  def keypressed?(%Stage{win: w}, val) do
+    RenderWindow.poll_event(w) == {:keypressed, val}
   end
 
   @doc """
@@ -126,7 +157,8 @@ defmodule Judge do
       [vx, vy]  = entity.velocity,
       x = x - xmin, xmax = xmax - w,
       y = y - ymin, ymax = ymax - h,
-    do: [
+    do:
+      [
         cond do
           abs(vx) < eps -> 0
           x < 0    -> Float.ceil(100.0*x / vx)
@@ -157,33 +189,54 @@ defmodule Main do
   @moduledoc """
   メイン・ルーチン群
   """
-  defstruct clock: nil, texture: nil, stage: nil, pen: nil
+  defstruct clock: nil, texture: nil, stage: nil, pen: nil, entity: []
 
   @doc """
   
   """
-  def run() do
-    app = %Main {
-            clock:   Clock.create(),
-            texture: %{ penguin: Texture.load_from_file('image/penguin.png') },
-          }
+  def load_texture() do
+    %{
+      penguin: Texture.load_from_file("image/penguin.png"),
+      elixir:  Texture.load_from_file("image/elixir.png")
+    }
+  end
 
-    s = Stage.create([600, 600], 'Penguin walk!', :Cyan)
-
-    p = [Penguin.create(app.texture[:penguin], [0.0, 168.0], [2.0, -0.4])]
-
-    overrun? = &Judge.overrun?(&1, Stage.border(s))
+  def flying_elixir() do
+    texture = load_texture()
+    stage   = Stage.create([800, 600], "Flying Elixir!", [200,200,200])
+    actor   = Actor.create(texture[:elixir], [150.0, 168.0], [1.0, 0.0])
+    run(stage,
+      Enum.map([
+      [[ 3.0, 1.8], :Cyan   ],
+      [[ 1.5, 0.3], :Red    ],
+      [[ 2.0,-0.8], :Green  ],
+      [[ 2.3,-2.2], :Blue   ],
+      [[-2.0, 1.5], :Yellow ],
+      [[-2.7, 1.0], :Magenta],
+      [[-1.0,-0.4], :White  ],
+      [[-1.5,-1.4], [255,0,0,100]],
+      ], fn [v, c] -> Actor.clone(actor, velocity: v, color: c) end)
+    )
+  end
+  
+  def walking_penguin() do
+    texture = load_texture()
+    stage   = Stage.create([800, 600], "Walking Penguin!", [200,150,150])
+    actor   = Actor.create(texture[:penguin], [400.0, 300.0], [1.0, 0.3])
+    run(stage, [actor])
+  end
+  
+  def run(stage, actors) do
+    overrun? = &Judge.overrun?(&1, Stage.border(stage))
     
-    loop(600, s, p, overrun?)
-  end
- 
-  defp loop(0, _s, _p, _overrun?) do
-  end
-
-  defp loop(n, s, p, overrun?) do
-    Stage.update(s, p)
-    Process.sleep(1)
-    p = Enum.map(p, &Penguin.update(&1, 2, overrun?))
-    loop(n-1, s, p, overrun?)
+    until = fn
+      (true, _, _) ->
+        Stage.destroy(stage)
+      (false, actors, cont)  ->
+        Stage.update(stage, actors)
+        actors = Enum.map(actors, &Actor.update(&1, 2, overrun?))
+        cont.(Stage.keypressed?(stage, 36), actors, cont)
+    end
+    until.(false, actors, until)
   end
 end

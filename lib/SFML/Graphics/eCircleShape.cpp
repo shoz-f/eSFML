@@ -15,7 +15,6 @@
 
 /***** INCLUDE *****/
 #include "stdafx.h"
-#include "eColor.h"
 #include "eCircleShape.h"
 
 /***** CONSTANT *****/
@@ -118,18 +117,13 @@ ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_T
         return enif_make_badarg(env);
     }
 
-    char name[256];
-    if (!enif_get_atom(env, argv[1], name, sizeof(name), ERL_NIF_LATIN1)) {
+    sf::Color color;
+    if (!enifGetColor(env, argv[1], color)) {
         return enif_make_badarg(env);
     }
 
-    try {
-        sf::Color color = cColorMap.at(name);
-        res.mObj->setFillColor(color);
-    }
-    catch (std::out_of_range&) {
-    }
-    
+    res.mObj->setFillColor(color);
+
     return argv[0];
 }
 

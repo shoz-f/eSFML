@@ -4,3 +4,5 @@
 #include "ErlNifEx.h"
 
 typedef NifRes<sf::Drawable, true> ResDrawable;
+
+extern sf::Mutex mutexGL;
