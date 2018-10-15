@@ -25,6 +25,8 @@ defmodule SFML.Graphics.NIF do
   def sprite_set_texture(_a, _b),                do: raise "NIF sprite_set_texture/2 not implemented"
   def sprite_set_texture_rect(_a, _b),           do: raise "NIF sprite_set_texture_rect/2 not implemented"
   def sprite_get_texture_rect(_a),               do: raise "NIF sprite_set_texture_rect/2 not implemented"
+  def sprite_get_origin(_1),                     do: raise "NIF sprite_get_origin/1 not implemented"
+  def sprite_set_origin(_1, _2),                 do: raise "NIF sprite_set_origin/2 not implemented"
   def sprite_get_position(_a),                   do: raise "NIF sprite_get_position/1 not implemented"
   def sprite_set_position(_a, _b),               do: raise "NIF sprite_set_position/2 not implemented"
   def sprite_get_rotation(_a),                   do: raise "NIF sprite_get_rotation/1 not implemented"

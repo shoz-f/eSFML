@@ -30,6 +30,8 @@
 /***** PRIVATE VARIABLE *****/
 ErlNifResourceType* ResClock::_ResType;
 
+sf::Clock gClock;
+
 /***** PRIVATE FUNCTION *****/
 
 /***  Module Header  ******************************************************}}}*/
@@ -64,8 +66,7 @@ ERL_NIF_TERM sfClockCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 ERL_NIF_TERM sfClockRelease(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     ResClock res(env);
-
-    if (!res.Create()) {
+    if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
 
@@ -149,4 +150,34 @@ ERL_NIF_TERM sfClockInterval(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]
     return enif_make_int(env, lap.asMilliseconds());
 }
 
-/***  End of eClock.cpp  *************************************************}}}*/
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfGClockGetElapsedTime(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    sf::Time t = gClock.getElapsedTime();
+    return enif_make_int(env, t.asMilliseconds());
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfGClockRestart(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    sf::Time t = gClock.restart();
+    return enif_make_int(env, t.asMilliseconds());
+}
+
+/***  End of eClock.cpp  **************************************************}}}*/

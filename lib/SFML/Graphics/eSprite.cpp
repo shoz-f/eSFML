@@ -235,6 +235,52 @@ ERL_NIF_TERM sfSpriteGetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
+ERL_NIF_TERM sfSpriteGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResSprite res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+
+    sf::Vector2f org = res.mObj->getOrigin();
+    return enifMakeVector2f(env, org);
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfSpriteSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResSprite res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+
+    sf::Vector2f org(0.0, 0.0);
+    if (!enifGetVector2f(env, argv[1], org)) {
+        return enif_make_badarg(env);
+    }
+
+    res.mObj->setOrigin(org);
+
+    return argv[0];
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
 ERL_NIF_TERM sfSpriteGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     ResSprite res(env);
@@ -431,11 +477,7 @@ ERL_NIF_TERM sfSpriteMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
         return enif_make_badarg(env);
     }
 
-    mutexGL.lock();
-
     res.mObj->move(delta);
-
-    mutexGL.unlock();
 
     return argv[0];
 }
@@ -508,14 +550,10 @@ ERL_NIF_TERM sfSpriteFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
         return enif_make_badarg(env);
     }
 
-    mutexGL.lock();
-
     sf::IntRect r = res.mObj->getTextureRect();
     r.left  += r.width;
     r.width *= -1;
     res.mObj->setTextureRect(r);
-
-    mutexGL.unlock();
 
     return argv[0];
 }
@@ -536,14 +574,10 @@ ERL_NIF_TERM sfSpriteFlop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
         return enif_make_badarg(env);
     }
 
-    mutexGL.lock();
-
     sf::IntRect r = res.mObj->getTextureRect();
     r.top    += r.height;
     r.height *= -1;
     res.mObj->setTextureRect(r);
-
-    mutexGL.unlock();
 
     return argv[0];
 }
@@ -564,11 +598,7 @@ ERL_NIF_TERM sfSpriteGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TER
         return enif_make_badarg(env);
     }
 
-    mutexGL.lock();
-
     sf::FloatRect rect = res.mObj->getGlobalBounds();
-
-    mutexGL.unlock();
 
     return enifMakeRectf(env, rect);
 }

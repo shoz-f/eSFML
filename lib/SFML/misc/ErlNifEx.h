@@ -39,12 +39,34 @@ const std::map<std::string, sf::Color> cColorMap = {
 
 /***** MACRO *****/
 #define NIL(env) enif_make_atom(env, "nil")
+#define OK(env)  enif_make_atom(env, "ok")
 
 #define DECL_NIF(name)  ERL_NIF_TERM name(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***** EXPORT VARIABLE *****/
 
 /***** EXPORT FUNCTION *****/
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline bool enifGetBoolean(ErlNifEnv* env, ERL_NIF_TERM term, bool& cond)
+{
+    char atom[256];
+    if (!enif_get_atom(env, term, atom, sizeof(atom), ERL_NIF_LATIN1)) {
+        return false;
+    }
+    
+    cond = strcmp(atom, "false") != 0 && strcmp(atom, "nil") != 0;
+    
+    return true;
+}
 
 /***  Module Header  ******************************************************}}}*/
 /**

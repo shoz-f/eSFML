@@ -120,10 +120,12 @@ public:
         enif_release_resource(mRes);
     }
     
-    ERL_NIF_TERM MkTerm()
+    ERL_NIF_TERM MkTerm(bool keep=false)
     {
         ERL_NIF_TERM term = enif_make_resource(mEnv, mRes);
-        enif_release_resource(mRes);
+        if (!keep) {
+            enif_release_resource(mRes);
+        }
         return term;
     }
 

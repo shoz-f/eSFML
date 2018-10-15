@@ -9,8 +9,6 @@
 #include "eSprite.h"
 #include "eTexture.h"
 
-sf::Mutex mutexGL;
-
 ErlNifResourceType* ResDrawable::_ResType;
 
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
@@ -46,6 +44,8 @@ static ErlNifFunc nif_funcs[] = {
     { "sprite_set_texture",                2, sfSpriteSetTexture              },
     { "sprite_set_texture_rect",           2, sfSpriteSetTextureRect          },
     { "sprite_get_texture_rect",           1, sfSpriteGetTextureRect          },
+    { "sprite_get_origin",                 1, sfSpriteGetOrigin               },
+    { "sprite_set_origin",                 2, sfSpriteSetOrigin               },
     { "sprite_get_position",               1, sfSpriteGetPosition             },
     { "sprite_set_position",               2, sfSpriteSetPosition             },
     { "sprite_get_rotation",               1, sfSpriteGetRotation             },

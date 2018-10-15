@@ -12,4 +12,3 @@ defmodule SFML.Graphics.RenderWindow do
   defdelegate poll_event(w),                 to: NIF, as: :render_window_poll_event
   defdelegate request_focus(w),              to: NIF, as: :render_window_request_focus
 end
-                                         

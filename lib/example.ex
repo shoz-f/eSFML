@@ -1,5 +1,8 @@
-alias SFML.Graphics.{RenderWindow,Sprite,Texture}
+alias SFML.Graphics.{RenderWindow,Sprite}
 alias SFML.System.{Clock,Vector2}
+alias SFML.Audio.Music
+alias GameGear.TextureBox
+
 
 defmodule Actor do
   @moduledoc """
@@ -36,7 +39,28 @@ defmodule Actor do
       }
     end
   end
-
+  
+  @doc """
+  """
+  def set_origin(%Actor{sprite: s} = a, org) do
+    Sprite.set_origin(s, org)
+    a
+  end
+  
+  @doc """
+  """
+  def scale(%Actor{sprite: s} = a, factor) do
+    Sprite.scale(s, factor)
+    a
+  end
+  
+  @doc """
+  """
+  def rotate(%Actor{sprite: s} = a, angle) do
+    Sprite.rotate(s, angle)
+    a
+  end
+  
   @doc """
   オブジェクトの速度をvに変更する
   """
@@ -48,9 +72,9 @@ defmodule Actor do
   @doc """
   オブジェクトをvelocityの方向に移動させる
   """
-  def walk(%Actor{sprite: s, velocity: v} = p, time) do
+  def walk(%Actor{sprite: s, velocity: v} = a, time) do
     Sprite.move(s, Vector2.scale(v, time))
-    p
+    a
   end
 
   @doc """
@@ -106,8 +130,8 @@ defmodule Stage do
   """
   def create([_width, _height] = size, title, color) do
     %Stage{
-      win: RenderWindow.create(size, title),
-#           |> RenderWindow.set_framerate_limit(60),
+      win: RenderWindow.create(size, title)
+           |> RenderWindow.set_framerate_limit(60),
       bg:  color
     }
   end
@@ -119,6 +143,8 @@ defmodule Stage do
     RenderWindow.destroy(w)
   end
 
+  @doc """
+  """
   def keypressed?(%Stage{win: w}, val) do
     RenderWindow.poll_event(w) == {:keypressed, val}
   end
@@ -189,22 +215,24 @@ defmodule Main do
   @moduledoc """
   メイン・ルーチン群
   """
-  defstruct clock: nil, texture: nil, stage: nil, pen: nil, entity: []
+  defstruct stage: nil, pen: nil, entity: []
 
   @doc """
   
   """
   def load_texture() do
-    %{
-      penguin: Texture.load_from_file("image/penguin.png"),
-      elixir:  Texture.load_from_file("image/elixir.png")
-    }
+    TextureBox.create()
+    Enum.each([
+      penguin: "image/penguin.png",
+      elixir:  "image/elixir.png",
+      galaxy:  "image/galaxy.jpg"
+    ], &TextureBox.add_from_file(&1))
   end
 
   def flying_elixir() do
-    texture = load_texture()
+    load_texture()
     stage   = Stage.create([800, 600], "Flying Elixir!", [200,200,200])
-    actor   = Actor.create(texture[:elixir], [150.0, 168.0], [1.0, 0.0])
+    actor   = Actor.create(TextureBox.get(:elixir), [150.0, 168.0], [1.0, 0.0])
     run(stage,
       Enum.map([
       [[ 3.0, 1.8], :Cyan   ],
@@ -220,12 +248,35 @@ defmodule Main do
   end
   
   def walking_penguin() do
-    texture = load_texture()
+    load_texture()
     stage   = Stage.create([800, 600], "Walking Penguin!", [200,150,150])
-    actor   = Actor.create(texture[:penguin], [400.0, 300.0], [1.0, 0.3])
+    actor   = Actor.create(TextureBox.get(:penguin), [400.0, 300.0], [1.0, 0.3])
     run(stage, [actor])
   end
+
+  def jupiter() do
+    bgm = Music.open_from_file("jupiter.wav")
+    Music.play(bgm)
+  end
   
+  def galaxy() do
+    load_texture()
+    stage   = Stage.create([600,600], "Galaxy!", :Black)
+    actor   = Actor.create(TextureBox.get(:galaxy), [400.0, 400.0], [1.0, 0.0])
+              |> Actor.set_origin([320.0, 230.0])
+              |> Actor.scale([2.0, 2.0])
+    
+    bgm = jupiter()
+ 
+    until = fn
+      (false, actors, cont) ->
+        actors = Enum.map(actors, &Actor.rotate(&1, 0.2))
+        Stage.update(stage, actors)
+        cont.(false, actors, cont)
+    end
+    until.(false, [actor], until)
+  end
+ 
   def run(stage, actors) do
     overrun? = &Judge.overrun?(&1, Stage.border(stage))
     
