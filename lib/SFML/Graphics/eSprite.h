@@ -67,6 +67,9 @@ ERL_NIF_TERM sfSpriteSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM arg
 ERL_NIF_TERM sfSpriteSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 DECL_NIF(sfSpriteGetTextureRect);
 
+DECL_NIF(sfSpriteGetOrigin);
+DECL_NIF(sfSpriteSetOrigin);
+
 ERL_NIF_TERM sfSpriteGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfSpriteSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 

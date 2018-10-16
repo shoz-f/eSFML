@@ -6,6 +6,8 @@ defmodule SFML.Graphics.Sprite do
   defdelegate set_texture(s, texture),   to: NIF, as: :sprite_set_texture
   defdelegate set_texture_rect(s, rect), to: NIF, as: :sprite_set_texture_rect
   defdelegate get_texture_rect(s),       to: NIF, as: :sprite_get_texture_rect
+  defdelegate get_origin(s),             to: NIF, as: :sprite_get_origin
+  defdelegate set_origin(s, org),        to: NIF, as: :sprite_set_origin
   defdelegate get_position(s),           to: NIF, as: :sprite_get_position
   defdelegate set_position(s, pos),      to: NIF, as: :sprite_set_position
   defdelegate get_rotation(s),           to: NIF, as: :sprite_get_rotation
