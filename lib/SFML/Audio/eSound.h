@@ -6,6 +6,7 @@
 typedef NifRes<sf::Sound> ResSound;
 
 DECL_NIF(sfSoundCreate);
+DECL_NIF(sfSoundSetBuffer);
 DECL_NIF(sfSoundDiscard);
 DECL_NIF(sfSoundPlay);
 DECL_NIF(sfSoundPause);

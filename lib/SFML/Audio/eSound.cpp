@@ -68,14 +68,8 @@ ERL_NIF_TERM sfSoundSetBuffer(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
         return enif_make_badarg(env);
     }
 
-    ErlNifBinary bin;
-    if (!enif_inspect_binary(env, argv[0], &bin)) {
-        return enif_make_badarg(env);
-    }
-    std::string fname((const char*)bin.data, bin.size);
-
     ResSoundBuffer sb(env);
-    if (!res.Open(argv[1])) {
+    if (!sb.Open(argv[1])) {
         return enif_make_badarg(env);
     }
 

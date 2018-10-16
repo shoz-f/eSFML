@@ -3,8 +3,8 @@ defmodule GameGear.Turtle do
   
   def forward(kame, step) do
     with %{pos: [x,y], theta: theta, speed: speed} = kame,
-      dx = step*speed*deg_cos(theta)
-      dy = step*speed*deg_sin(theta),
+      dx = step*speed*deg_cos(theta),
+      dy = step*speed*deg_sin(theta)
     do
       %{kame | pos: [x+dx, y+dy]}
     end
