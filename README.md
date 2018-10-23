@@ -1,4 +1,4 @@
-# eSFML binding in Elixir (experimental)
+# SFML binding in Elixir (experimental)
 
 ```elixir
 >iex -S mix
