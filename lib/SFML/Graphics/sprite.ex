@@ -1,6 +1,11 @@
 defmodule SFML.Graphics.Sprite do
   alias SFML.Graphics.NIF
 
+  def set_origin(s, :center) do
+    [x1, y1, x2, y2] = get_texture_rect(s)
+    set_origin(s, [(x1+x2)/2.0, (y1+y2)/2.0])
+  end
+
   defdelegate create(texture),           to: NIF, as: :sprite_create
   defdelegate clone(texture),            to: NIF, as: :sprite_clone
   defdelegate set_texture(s, texture),   to: NIF, as: :sprite_set_texture

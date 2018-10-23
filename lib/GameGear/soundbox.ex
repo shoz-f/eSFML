@@ -1,6 +1,6 @@
-alias SFML.Audio.Music
+alias SFML.Audio.{SoundBuffer,Sound}
 
-defmodule GameGear.JukeBox do
+defmodule GameGear.SoundBox do
   use Agent
 
   def create(opt \\ [name: __MODULE__]) do
@@ -8,26 +8,28 @@ defmodule GameGear.JukeBox do
   end
 
   def add_from_file({name, filename}, id \\ __MODULE__) do
-    music = Music.open_from_file(filename)
-    Agent.update(id, &Map.put(&1, name, music))
+    sb = SoundBuffer.load_from_file(filename)
+    Agent.update(id, &Map.put(&1, name, sb))
   end
 
   def get(name, id \\ __MODULE__) do
-    Agent.get(id, &Map.get(&1, name))
+    sb = Agent.get(id, &Map.get(&1, name))
+    Sound.create()
+    |> Sound.set_buffer(sb)
   end
 
   def play(name, id \\ __MODULE__) do
     get(name, id)
-    |> Music.play()
+    |> Sound.play()
   end
 
   def pause(name, id \\ __MODULE__) do
     get(name, id)
-    |> Music.pause()
+    |> Sound.pause()
   end
 
   def stop(name, id \\ __MODULE__) do
     get(name, id)
-    |> Music.stop()
+    |> Sound.stop()
   end
 end
