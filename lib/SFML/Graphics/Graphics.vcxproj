@@ -155,6 +155,7 @@
     <ClInclude Include="..\System\Win32\EventFlagImpl.hpp" />
     <ClInclude Include="eCircleShape.h" />
     <ClInclude Include="eColor.h" />
+    <ClInclude Include="eConvexShape.h" />
     <ClInclude Include="eDrawable.h" />
     <ClInclude Include="eRenderWindow.h" />
     <ClInclude Include="eSprite.h" />
@@ -180,6 +181,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="eCircleShape.cpp" />
+    <ClCompile Include="eConvexShape.cpp" />
     <ClCompile Include="eEvent.cpp" />
     <ClCompile Include="eGraphicsNIF.cpp" />
     <ClCompile Include="eRenderWindow.cpp" />

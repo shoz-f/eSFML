@@ -61,33 +61,33 @@ typedef NifResChild<eSprite, ResDrawable> ResSprite;
 /*** GLOBAL VARIABLE ***/
 
 /*** EXPORT FUNCTION ***/
-ERL_NIF_TERM sfSpriteCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteCreate);
 DECL_NIF(sfSpriteClone);
-ERL_NIF_TERM sfSpriteSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteSetTexture);
+DECL_NIF(sfSpriteSetTextureRect);
 DECL_NIF(sfSpriteGetTextureRect);
 
 DECL_NIF(sfSpriteGetOrigin);
 DECL_NIF(sfSpriteSetOrigin);
 
-ERL_NIF_TERM sfSpriteGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteGetPosition);
+DECL_NIF(sfSpriteSetPosition);
 
-ERL_NIF_TERM sfSpriteGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteGetRotation);
+DECL_NIF(sfSpriteSetRotation);
 
-ERL_NIF_TERM sfSpriteGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteGetScale);
+DECL_NIF(sfSpriteSetScale);
 
 DECL_NIF(sfSpriteGetColor);
 DECL_NIF(sfSpriteSetColor);
 
-ERL_NIF_TERM sfSpriteMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
-ERL_NIF_TERM sfSpriteFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteMove);
+DECL_NIF(sfSpriteRotate);
+DECL_NIF(sfSpriteScale);
+DECL_NIF(sfSpriteFlip);
 DECL_NIF(sfSpriteFlop);
 
-ERL_NIF_TERM sfSpriteGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+DECL_NIF(sfSpriteGetGlobalBounds);
 
 #endif // _ESPRITE_H
