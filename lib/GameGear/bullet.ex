@@ -16,10 +16,6 @@ defmodule GameGear.Bullet do
     ], &TextureBox.add_from_file(&1, @bullet))
   end
 
-  def is_alive?(%{alive: alive} = bullet) do
-      if(alive, do: bullet, else: nil)
-  end
-
   def shot([_x, _y] = pos, speed, dir, img) do
     %Bullet{
       sprite:   TextureBox.get(img, @bullet)
@@ -40,5 +36,9 @@ defmodule GameGear.Bullet do
       {:outside, _, _} -> %{bullet| alive: false}
       {_, _, _}        -> bullet
     end
+  end
+
+  def is_alive?(%{alive: alive} = bullet) do
+      if(alive, do: bullet, else: nil)
   end
 end
