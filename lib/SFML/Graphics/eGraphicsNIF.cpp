@@ -16,7 +16,6 @@ int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
     ResDrawable::Define(env, "sfml_drawable");
     ResRenderWindow::Define(env, "sfml_renderwindow");
-    ResSprite::Define(env, "sfml_sprite");
     ResTexture::Define(env, "sfml_texture");
     return 0;
 }

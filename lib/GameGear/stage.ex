@@ -14,7 +14,7 @@ defmodule GameGear.Stage do
     def create([_width, _height] = size, title, color) do
       %Stage{
         win: RenderWindow.create(size, title)
-             |> RenderWindow.set_framerate_limit(90),
+             |> RenderWindow.set_framerate_limit(120),
         bg:  color
       }
     end
@@ -22,7 +22,7 @@ defmodule GameGear.Stage do
     @doc """
     ステージを破棄
     """
-    def destroy(%{win: w}) do
+    def discard(%{win: w}) do
       RenderWindow.destroy(w)
     end
   
@@ -30,6 +30,12 @@ defmodule GameGear.Stage do
     """
     def keypressed?(%{win: w}, val) do
       RenderWindow.poll_event(w) == {:keypressed, val}
+    end
+  
+    @doc """
+    """
+    def poll_event(%{win: w}) do
+      RenderWindow.poll_event(w)
     end
   
     @doc """

@@ -160,6 +160,7 @@
     <ClInclude Include="eRenderWindow.h" />
     <ClInclude Include="eSprite.h" />
     <ClInclude Include="eTexture.h" />
+    <ClInclude Include="eTransformable.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -186,6 +187,9 @@
     <ClCompile Include="eGraphicsNIF.cpp" />
     <ClCompile Include="eRenderWindow.cpp" />
     <ClCompile Include="eSprite.cpp" />
+    <ClCompile Include="eTransformable.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="eTexture.cpp" />
   </ItemGroup>
