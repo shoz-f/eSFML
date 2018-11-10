@@ -25,6 +25,9 @@ esfml-*.tar
 # Custom setting
 .vs/
 x64/
+*build/
 *.ilk
 *.filters
 *.VC*
+*.dll
+*.lib

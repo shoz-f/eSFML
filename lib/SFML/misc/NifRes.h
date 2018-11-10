@@ -44,7 +44,7 @@ struct Int2Type
 /**
 * NIFs resouce wrapper for alone/abstruct class objects
 * @par DESCRIPTION
-*   <<‰ðà‹L“ü>>
+*   <<è§£èª¬è¨˜å…¥>>
 * @par EXAMPLE
 *
 * @see
@@ -147,7 +147,7 @@ public:
 /**
 * NIFs resouce wrapper for derived class objects
 * @par DESCRIPTION
-*   <<‰ðà‹L“ü>>
+*   <<è§£èª¬è¨˜å…¥>>
 * @par EXAMPLE
 *
 * @see
