@@ -2,10 +2,10 @@
 // 参照回数が多く、かつあまり変更されない、プロジェクト専用のインクルード ファイル
 // を記述します。
 //
+#ifndef _STDAFX_H
+#define _STDAFX_H
 
 #if defined(WIN32)
-
-#pragma once
 
 #include "targetver.h"
 
@@ -16,3 +16,5 @@
 #endif
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください
+
+#endif

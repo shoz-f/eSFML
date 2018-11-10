@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _WINDOW_H
+#define _WINDOW_H
 
 #include <SFML/Graphics.hpp>
 
@@ -10,3 +11,4 @@ void sfWindowDisplay(sf::Window* win);
 
 bool sfWindowPollEvent(sf::Window*win, sf::Event* event);
 
+#endif

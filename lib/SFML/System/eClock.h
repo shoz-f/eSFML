@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ECLOCK_H
+#define _ECLOCK_H
 
 #include <SFML/System/Clock.hpp>
 #include "ErlNifEx.h"
@@ -12,3 +13,5 @@ ERL_NIF_TERM sfClockRestart(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 ERL_NIF_TERM sfClockInterval(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 DECL_NIF(sfGClockGetElapsedTime);
 DECL_NIF(sfGClockRestart);
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _EMUSIC_H
+#define _EMUSIC_H
 
 #include <SFML/Audio.hpp>
 #include "ErlNifEx.h"
@@ -24,3 +25,4 @@ DECL_NIF(sfMusicSetPitch);
 DECL_NIF(sfMusicGetAttenuation);
 DECL_NIF(sfMusicSetAttenuation);
 
+#endif

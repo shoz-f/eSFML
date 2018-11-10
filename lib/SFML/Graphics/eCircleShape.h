@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ECIRCLESHAPE_H
+#define _ECIRCLESHAPE_H
 
 #include "eDrawable.h"
 
@@ -8,3 +9,5 @@ ERL_NIF_TERM sfCircleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 ERL_NIF_TERM sfCircleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
+
+#endif
