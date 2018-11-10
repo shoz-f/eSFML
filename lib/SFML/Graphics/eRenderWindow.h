@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ERENDERWINDOW_H
+#define _ERENDERWINDOW_H
 
 #include <SFML/Graphics.hpp>
 #include "EventFlag.hpp"
@@ -55,3 +56,5 @@ ERL_NIF_TERM sfRenderWindowIsOpen(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 ERL_NIF_TERM sfRenderWindowPollEvent(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 ERL_NIF_TERM sfRenderWindowRequestFocus(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]);
 DECL_NIF(sfRenderWindowSetFramerateLimit);
+
+#endif

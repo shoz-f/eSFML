@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _ESOUND_H
+#define _ESOUND_H
 
 #include <SFML/Audio.hpp>
 #include "ErlNifEx.h"
@@ -21,3 +22,5 @@ DECL_NIF(sfSoundGetPitch);
 DECL_NIF(sfSoundSetPitch);
 DECL_NIF(sfSoundGetAttenuation);
 DECL_NIF(sfSoundSetAttenuation);
+
+#endif
