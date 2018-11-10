@@ -2,7 +2,7 @@
 /**
 * @file eSoundBuffer.cpp
 *
-* <<ƒ^ƒCƒgƒ‹‹L“ü>>
+* <<ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>>
 * @author	Shozo Fukuda
 * @date		create: Sat Sep 08 08:01:09 JST 2018
 * @date		modify: $Date:$
@@ -34,11 +34,11 @@ ErlNifResourceType* ResSoundBuffer::_ResType;
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundBufferLoadFromFile(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -64,11 +64,11 @@ ERL_NIF_TERM sfSoundBufferLoadFromFile(ErlNifEnv* env, int argc, const ERL_NIF_T
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundBufferDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -85,11 +85,11 @@ ERL_NIF_TERM sfSoundBufferDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundBufferSaveToFile(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])

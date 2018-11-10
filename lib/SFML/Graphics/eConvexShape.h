@@ -2,7 +2,7 @@
 /**
 * @file eConvexShape.h
 *
-* <<タイトル記入>>
+* <<繧ｿ繧､繝医Ν險伜�･>>
 * @author	Shozo Fukuda
 * @date		create 
 * @date		modify 

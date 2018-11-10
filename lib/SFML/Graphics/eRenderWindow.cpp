@@ -2,7 +2,7 @@
 /**
 * @file eRenderWindow.cpp
 *
-* <<ƒ^ƒCƒgƒ‹‹L“ü>>
+* <<ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>>
 * @author	Shozo Fukuda
 * @date		create: Sat Sep 08 08:01:09 JST 2018
 * @date		modify: $Date:$
@@ -36,11 +36,11 @@ ErlNifResourceType* ResRenderWindow::_ResType;
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 sf::eRenderWindow::eRenderWindow()
@@ -49,11 +49,11 @@ sf::eRenderWindow::eRenderWindow()
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 void sf::eRenderWindow::mainLoop()
@@ -85,11 +85,11 @@ void sf::eRenderWindow::mainLoop()
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sf::eRenderWindow::call(NifFunc func, ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -110,11 +110,11 @@ ERL_NIF_TERM sf::eRenderWindow::call(NifFunc func, ErlNifEnv* env, int argc, con
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -145,11 +145,11 @@ ERL_NIF_TERM sf::eRenderWindow::launchWin(ErlNifEnv* env, int argc, const ERL_NI
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -176,11 +176,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxDiscard(ErlNifEnv* env, int argc, const ERL_NI
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowClear(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -208,11 +208,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxClear(ErlNifEnv* env, int argc, const ERL_NIF_
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowDraw(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -240,11 +240,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxDraw(ErlNifEnv* env, int argc, const ERL_NIF_T
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowSetFramerateLimit(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -273,11 +273,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxSetFramerateLimit(ErlNifEnv* env, int argc, co
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowDisplay(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -300,11 +300,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxDisplay(ErlNifEnv* env, int argc, const ERL_NI
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowGetSize(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -327,11 +327,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxGetSize(ErlNifEnv* env, int argc, const ERL_NI
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowIsOpen(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -352,11 +352,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxIsOpen(ErlNifEnv* env, int argc, const ERL_NIF
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 #include "eEvent.h"
@@ -385,11 +385,11 @@ ERL_NIF_TERM sf::eRenderWindow::fxPollEvent(ErlNifEnv* env, int argc, const ERL_
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfRenderWindowRequestFocus(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])

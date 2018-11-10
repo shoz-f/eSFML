@@ -2,7 +2,7 @@
 /**
 * @file eSound.cpp
 *
-* <<ƒ^ƒCƒgƒ‹‹L“ü>>
+* <<ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>>
 * @author	Shozo Fukuda
 * @date		create: Sat Sep 08 08:01:09 JST 2018
 * @date		modify: $Date:$
@@ -35,11 +35,11 @@ ErlNifResourceType* ResSound::_ResType;
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -54,11 +54,11 @@ ERL_NIF_TERM sfSoundCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetBuffer(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -80,11 +80,11 @@ ERL_NIF_TERM sfSoundSetBuffer(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -101,11 +101,11 @@ ERL_NIF_TERM sfSoundDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundPlay(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -122,11 +122,11 @@ ERL_NIF_TERM sfSoundPlay(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundPause(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -143,11 +143,11 @@ ERL_NIF_TERM sfSoundPause(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundStop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -164,11 +164,11 @@ ERL_NIF_TERM sfSoundStop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundGetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -185,11 +185,11 @@ ERL_NIF_TERM sfSoundGetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TER
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -212,11 +212,11 @@ ERL_NIF_TERM sfSoundSetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TER
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundGetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -231,11 +231,11 @@ ERL_NIF_TERM sfSoundGetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -257,11 +257,11 @@ ERL_NIF_TERM sfSoundSetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundGetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -276,11 +276,11 @@ ERL_NIF_TERM sfSoundGetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -302,11 +302,11 @@ ERL_NIF_TERM sfSoundSetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundGetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -321,11 +321,11 @@ ERL_NIF_TERM sfSoundGetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -347,11 +347,11 @@ ERL_NIF_TERM sfSoundSetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundGetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -366,11 +366,11 @@ ERL_NIF_TERM sfSoundGetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfSoundSetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])

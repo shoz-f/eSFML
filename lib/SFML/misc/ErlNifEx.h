@@ -49,11 +49,11 @@ const std::map<std::string, sf::Color> cColorMap = {
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline bool enifGetBoolean(ErlNifEnv* env, ERL_NIF_TERM term, bool& cond)
@@ -70,11 +70,11 @@ inline bool enifGetBoolean(ErlNifEnv* env, ERL_NIF_TERM term, bool& cond)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeBoolean(ErlNifEnv* env, bool cond)
@@ -84,11 +84,11 @@ inline ERL_NIF_TERM enifMakeBoolean(ErlNifEnv* env, bool cond)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline bool enifGetVector2f(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2f& v)
@@ -115,11 +115,11 @@ inline bool enifGetVector2f(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2f& v)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeVector2f(ErlNifEnv* env, sf::Vector2f& v)
@@ -131,11 +131,11 @@ inline ERL_NIF_TERM enifMakeVector2f(ErlNifEnv* env, sf::Vector2f& v)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline bool enifGetVector2u(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2u& v)
@@ -162,11 +162,11 @@ inline bool enifGetVector2u(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2u& v)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeVector2u(ErlNifEnv* env, sf::Vector2u& v)
@@ -178,11 +178,11 @@ inline ERL_NIF_TERM enifMakeVector2u(ErlNifEnv* env, sf::Vector2u& v)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifGetRecti(ErlNifEnv* env, ERL_NIF_TERM list, sf::IntRect& r)
@@ -217,11 +217,11 @@ inline ERL_NIF_TERM enifGetRecti(ErlNifEnv* env, ERL_NIF_TERM list, sf::IntRect&
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeRecti(ErlNifEnv* env, sf::IntRect& r)
@@ -235,11 +235,11 @@ inline ERL_NIF_TERM enifMakeRecti(ErlNifEnv* env, sf::IntRect& r)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifGetRectf(ErlNifEnv* env, ERL_NIF_TERM list, sf::FloatRect& r)
@@ -274,11 +274,11 @@ inline ERL_NIF_TERM enifGetRectf(ErlNifEnv* env, ERL_NIF_TERM list, sf::FloatRec
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeRectf(ErlNifEnv* env, sf::FloatRect& r)
@@ -292,11 +292,11 @@ inline ERL_NIF_TERM enifMakeRectf(ErlNifEnv* env, sf::FloatRect& r)
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifGetColor(ErlNifEnv* env, ERL_NIF_TERM term, sf::Color& color)
@@ -337,11 +337,11 @@ inline ERL_NIF_TERM enifGetColor(ErlNifEnv* env, ERL_NIF_TERM term, sf::Color& c
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 inline ERL_NIF_TERM enifMakeColor(ErlNifEnv* env, sf::Color& color)

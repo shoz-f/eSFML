@@ -2,7 +2,7 @@
 /**
 * @file eMusic.cpp
 *
-* <<ƒ^ƒCƒgƒ‹‹L“ü>>
+* <<ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>>
 * @author	Shozo Fukuda
 * @date		create: Sat Sep 08 08:01:09 JST 2018
 * @date		modify: $Date:$
@@ -34,11 +34,11 @@ ErlNifResourceType* ResMusic::_ResType;
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -53,11 +53,11 @@ ERL_NIF_TERM sfMusicCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicOpenFromFile(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -82,11 +82,11 @@ ERL_NIF_TERM sfMusicOpenFromFile(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -103,11 +103,11 @@ ERL_NIF_TERM sfMusicDiscard(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicPlay(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -124,11 +124,11 @@ ERL_NIF_TERM sfMusicPlay(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicPause(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -145,11 +145,11 @@ ERL_NIF_TERM sfMusicPause(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicStop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -166,11 +166,11 @@ ERL_NIF_TERM sfMusicStop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetChannelCount(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -185,11 +185,11 @@ ERL_NIF_TERM sfMusicGetChannelCount(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetSampleRate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -204,11 +204,11 @@ ERL_NIF_TERM sfMusicGetSampleRate(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -225,11 +225,11 @@ ERL_NIF_TERM sfMusicGetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TER
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicSetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -252,11 +252,11 @@ ERL_NIF_TERM sfMusicSetPlayingOffset(ErlNifEnv* env, int argc, const ERL_NIF_TER
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -271,11 +271,11 @@ ERL_NIF_TERM sfMusicGetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicSetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -297,11 +297,11 @@ ERL_NIF_TERM sfMusicSetLoop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -316,11 +316,11 @@ ERL_NIF_TERM sfMusicGetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicSetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -342,11 +342,11 @@ ERL_NIF_TERM sfMusicSetVolume(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -361,11 +361,11 @@ ERL_NIF_TERM sfMusicGetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicSetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -387,11 +387,11 @@ ERL_NIF_TERM sfMusicSetPitch(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicGetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -406,11 +406,11 @@ ERL_NIF_TERM sfMusicGetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* <ƒ^ƒCƒgƒ‹‹L“ü>
-* @par ‰ðà
-*   <<‰ðà‹L“ü>>
+* <ã‚¿ã‚¤ãƒˆãƒ«è¨˜å…¥>
+* @par è§£èª¬
+*   <<è§£èª¬è¨˜å…¥>>
 *
-* @retval <<–ß‚è’l‹L“ü>> <<–ß‚è’là–¾‹L“ü>>
+* @retval <<æˆ»ã‚Šå€¤è¨˜å…¥>> <<æˆ»ã‚Šå€¤èª¬æ˜Žè¨˜å…¥>>
 **/
 /**************************************************************************{{{*/
 ERL_NIF_TERM sfMusicSetAttenuation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
