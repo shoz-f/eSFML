@@ -28,6 +28,7 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
+template <>
 ErlNifResourceType* ResTexture::_ResType;
 
 /***** PRIVATE FUNCTION *****/
