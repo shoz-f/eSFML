@@ -5,11 +5,11 @@
 #include "EventFlag.hpp"
 
 #if defined(SFML_SYSTEM_WINDOWS)
-    //#include <SFML/System/Win32/EventFlagImpl.hpp>
     #include "Win32/EventFlagImpl.hpp"
+#elif defined(SFML_SYSTEM_LINUX)
+    #include "Unix/EventFlagImpl.hpp"
 #else
-    #error "Not yet implement for Unix
-    //#include <SFML/System/Unix/EventFlagImpl.hpp>
+    #error "Not yet implement for this OS"
 #endif
 
 

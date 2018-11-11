@@ -1,62 +1,44 @@
-#ifndef SFML_EVENTFLAG_HPP
-#define SFML_EVENTFLAG_HPP
+#ifndef SFML_EVENTFLAGIMPL_HPP
+#define SFML_EVENTFLAGIMPL_HPP
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
 #include <SFML/System/NonCopyable.hpp>
-
-#undef  SFML_SYSTEM_API
-#define SFML_SYSTEM_API
+#include <pthread.h>
 
 namespace sf
 {
 namespace priv
 {
-    class EventFlagImpl;
-}
+#define INFINITE (-1)
 
 ////////////////////////////////////////////////////////////
-/// \brief Blocks concurrent access to shared resources
-///        from multiple threads
-///
+/// \brief Windows implementation of event flags
 ////////////////////////////////////////////////////////////
-class SFML_SYSTEM_API EventFlag : NonCopyable
+class EventFlagImpl : NonCopyable
 {
 public:
-    enum {
-        FOREVER = 0xFFFFFFFF
-    };
-
     ////////////////////////////////////////////////////////////
-    /// \brief Default constructor
+    /// \brief constructor
     ///
     ////////////////////////////////////////////////////////////
-    EventFlag(bool state=false);
+    EventFlagImpl(bool state=false);
 
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
     ////////////////////////////////////////////////////////////
-    ~EventFlag();
+    ~EventFlagImpl();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Lock the mutex
-    ///
-    /// If the mutex is already locked in another thread,
-    /// this call will block the execution until the mutex
-    /// is released.
-    ///
-    /// \see unlock
+    /// \brief Wait the event flag
     ///
     ////////////////////////////////////////////////////////////
-    void wait(unsigned int timeout=FOREVER);
+    void wait(unsigned int timeout);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Unlock the mutex
-    ///
-    /// \see lock
+    /// \brief Signal the event flag
     ///
     ////////////////////////////////////////////////////////////
     void signal();
@@ -65,9 +47,13 @@ private:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    priv::EventFlagImpl* m_eventflagImpl; ///< OS-specific implementation
+    pthread_mutex_t mLock;
+    pthread_cond_t  mAwake;
+    bool            mEventFlag;
 };
 
+} // namespace priv
+    
 } // namespace sf
 
-#endif // SFML_EVENTFLAG_HPP
+#endif // SFML_EVENTFLAGIMPL_HPP

@@ -30,6 +30,7 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
+template <>
 ErlNifResourceType* ResRenderWindow::_ResType;
 
 /***** PRIVATE FUNCTION *****/

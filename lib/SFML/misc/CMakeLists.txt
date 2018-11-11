@@ -4,6 +4,7 @@ if (WIN32)
     )
 elseif(UNIX)
     set(PLATFORM_SRCS
+    Unix/EventFlagImpl.cpp
     )
 endif()
 

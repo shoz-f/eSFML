@@ -9,6 +9,8 @@ if (WIN32)
 	stdafx.cpp
 	dllmain.cpp
 	)
+elseif(UNIX)
+    set(CMAKE_CXX_FLAGS "-pthread -fPIC")
 endif()
 
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
