@@ -172,12 +172,12 @@ protected:
     virtual void AllocObj()
     {
         mObj  = new T();
-        *mRes = mObj;
+        *this->mRes = mObj;
     }
 
     virtual void BindObj()
     {
-        mObj = dynamic_cast<T*>(*mRes);
+        mObj = dynamic_cast<T*>(*this->mRes);
     }
 
 //ACCESSOR:

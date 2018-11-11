@@ -28,6 +28,7 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
+template <>
 ErlNifResourceType* ResClock::_ResType;
 
 sf::Clock gClock;

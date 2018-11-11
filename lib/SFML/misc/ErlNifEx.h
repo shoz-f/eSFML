@@ -20,6 +20,7 @@
 #include <erl_nif.h>
 #include <map>
 #include <string>
+#include <cstring>
 #include "NifRes.h"
 
 /***** CONSTANT *****/
@@ -63,7 +64,7 @@ inline bool enifGetBoolean(ErlNifEnv* env, ERL_NIF_TERM term, bool& cond)
         return false;
     }
     
-    cond = strcmp(atom, "false") != 0 && strcmp(atom, "nil") != 0;
+    cond = std::strcmp(atom, "false") != 0 && std::strcmp(atom, "nil") != 0;
     
     return true;
 }

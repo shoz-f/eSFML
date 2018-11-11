@@ -29,6 +29,7 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
+template <>
 ErlNifResourceType* ResSound::_ResType;
 
 /***** PRIVATE FUNCTION *****/
