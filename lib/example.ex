@@ -1,6 +1,6 @@
 alias SFML.Graphics.{Sprite}
 alias SFML.System.{Clock,Vector2}
-alias GameGear.{Stage,Bullet,NWayDann,Judge,TextureBox,JukeBox,TurtleGeo}
+alias GameGear.{Stage,Bullet,NWayDann,MintDann,Judge,TextureBox,JukeBox,TurtleGeo}
 
 
 defmodule Actor do
@@ -94,42 +94,6 @@ defmodule Actor do
       {_, :corner, step} ->
         TurtleGeo.backward(actor, step) |> flip |> flop
     end
-  end
-end
-
-
-defmodule Greet do
-#  require Kernel.SpecialForms
-
-  @callback greet :: String.t
-
-  defmacro __using__(_) do
-    quote do
-      @behaviour Greet
-
-      def greet() do
-        Greet.greet()
-      end
-
-      defoverridable Greet
-    end
-  end
-
-  def greet() do
-    "Hi"
-  end
-end
-
-defmodule Hello do
-  use Greet
-
-  @impl true
-  def greet() do
-    "Hello"
-  end
-  
-  def hi() do
-    Greet.greet()
   end
 end
 
@@ -251,6 +215,40 @@ defmodule TestBullet do
     until_loop.(false, [300.0, 300.0], [], until_loop)
     
     NWayDann.discard(launch)
+    Stage.discard(stage)
+    :ok
+  end
+end
+
+defmodule TestMint do
+  def run() do
+    Bullet.init()
+    stage  = Stage.create([600,600], "Linux Mint!", :Black)
+    launch = MintDann.create()
+
+    overrun? = &Judge.overrun?(&1, Stage.border(stage))
+    
+    until_loop = fn
+      (true, _, _, _) ->
+        :ok
+      (false, [x,y], bullets, loop) ->
+        Stage.update(stage, bullets)
+        bullets = Enum.map(bullets, &Bullet.update(&1, overrun?))
+                  |> Enum.filter(&Bullet.is_alive?(&1))
+        bullets = MintDann.shot(launch, [x,y]) ++ bullets
+
+        event = Stage.poll_event(stage)
+        x = case event do
+          {:keypressed, 79} -> x-5
+          {:keypressed, 81} -> x+5
+          _ -> x
+        end
+
+        loop.(event == {:keypressed, 36}, [x,y], bullets, loop)
+    end
+    until_loop.(false, [300.0, 300.0], [], until_loop)
+    
+    MintDann.discard(launch)
     Stage.discard(stage)
     :ok
   end

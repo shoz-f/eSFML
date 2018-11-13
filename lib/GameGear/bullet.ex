@@ -12,7 +12,8 @@ defmodule GameGear.Bullet do
     TextureBox.create(name: @bullet)
     Enum.each([
       b1: "image/b1.png",
-      b2: "image/bb1.png"
+      b2: "image/bb1.png",
+      b3: "image/mint.png"
     ], &TextureBox.add_from_file(&1, @bullet))
   end
 
