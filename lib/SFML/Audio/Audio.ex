@@ -1,7 +1,14 @@
 defmodule SFML.Audio.NIF do
   @on_load :load_nifs
   def load_nifs do
-    :erlang.load_nif(__DIR__ <> "/AudioNIF", 0)
+    :erlang.load_nif(
+      __DIR__ <> case :os.type do
+        {:win32,_} -> "/AudioNIF"
+        {:unix,_}  -> "/libAudioNIF"
+        {_,_}      -> "/UnknownOS"
+      end,
+      0
+    ) 
   end
 
   def soundbuffer_load_from_file(_1),            do: raise "NIF soundbuffer_load_from_file/1 not implemented"

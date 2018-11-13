@@ -50,7 +50,7 @@ struct Int2Type
 * @see
 **/
 /**************************************************************************{{{*/
-template <class T, bool isAbstruct=false>
+template <typename T, bool isAbstruct=false>
 class NifRes {
 //SETUP:
 public:
@@ -142,6 +142,12 @@ public:
     T** mRes;         ///< NIFs resource pointer
     T*  mObj;         ///< SFML object pointer
 };
+
+template <typename T, bool isAbstruct>
+ErlNifResourceType* NifRes<T,isAbstruct>::_ResType = 0;
+
+template <typename T, bool isAbstruct>
+char*               NifRes<T,isAbstruct>::_Name = 0;
 
 /***  Class Header  *******************************************************}}}*/
 /**

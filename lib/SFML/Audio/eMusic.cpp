@@ -28,8 +28,6 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
-template <>
-ErlNifResourceType* ResMusic::_ResType;
 
 /***** PRIVATE FUNCTION *****/
 

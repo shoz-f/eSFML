@@ -4,7 +4,7 @@
 #include <SFML/Audio.hpp>
 #include "ErlNifEx.h"
 
-typedef NifRes<sf::SoundBuffer> ResSoundBuffer;
+typedef NifRes<sf::SoundBuffer,false> ResSoundBuffer;
 
 DECL_NIF(sfSoundBufferLoadFromFile);
 DECL_NIF(sfSoundBufferDiscard);

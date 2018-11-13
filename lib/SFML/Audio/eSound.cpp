@@ -29,8 +29,6 @@
 /***** EXPORT FUNCTION *****/
 
 /***** PRIVATE VARIABLE *****/
-template <>
-ErlNifResourceType* ResSound::_ResType;
 
 /***** PRIVATE FUNCTION *****/
 
@@ -49,7 +47,7 @@ ERL_NIF_TERM sfSoundCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
     if (!res.Create()) {
         return enif_make_badarg(env);
     }
-    
+
     return res.MkTerm();
 }
 
