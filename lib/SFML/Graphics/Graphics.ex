@@ -1,7 +1,14 @@
 defmodule SFML.Graphics.NIF do
   @on_load :load_nifs
   def load_nifs do
-    :erlang.load_nif(__DIR__ <> "/GraphicsNIF", 0)
+    :erlang.load_nif(
+        __DIR__ <> case :os.type do
+            {:win32,_} -> "/GraphicsNIF"
+            {:unix,_}  -> "/libGraphicsNIF"
+            {_,_}      -> "/UnknownOS"
+        end,
+        0
+    ) 
   end
 
   def render_window_create(_a, _b),              do: raise "NIF render_window/2 not implemented"
@@ -72,4 +79,3 @@ defmodule SFML.Graphics.NIF do
   def texture_load_from_file(_a),                do: raise "NIF texture_load_from_file/1 not implemented"
   def texture_get_size(_a),                      do: raise "NIF texture_get_size/1 not implemented"
 end
-                                    

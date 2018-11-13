@@ -10,9 +10,6 @@
 #include "eSprite.h"
 #include "eTexture.h"
 
-template <>
-ErlNifResourceType* ResDrawable::_ResType;
-
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
     ResDrawable::Define(env, "sfml_drawable");
