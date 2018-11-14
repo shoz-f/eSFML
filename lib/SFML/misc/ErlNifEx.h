@@ -92,6 +92,78 @@ inline ERL_NIF_TERM enifMakeBoolean(ErlNifEnv* env, bool cond)
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
+inline bool enifGetInt(ErlNifEnv* env, ERL_NIF_TERM term, int& val)
+{
+    if (enif_get_int(env, term, &val)) {
+        return true;
+    }
+
+    double dval;
+    if (enif_get_double(env, term, &dval) && dval >= MININT && dval <= MAXINT) {
+        val = (int)dval;
+        return true;
+    }
+
+    return false;
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline bool enifGetUint(ErlNifEnv* env, ERL_NIF_TERM term, unsigned int& val)
+{
+    if (enif_get_uint(env, term, &val)) {
+        return true;
+    }
+
+    double dval;
+    if (enif_get_double(env, term, &dval) && dval >= 0.0 && dval <= MAXUINT) {
+        val = (int)dval;
+        return true;
+    }
+    return false;
+}
+
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline bool enifGetDouble(ErlNifEnv* env, ERL_NIF_TERM term, double& val)
+{
+    if (enif_get_double(env, term, &val)) {
+        return true;
+    }
+
+    int ival;
+    if (enif_get_int(env, term, &ival)) {
+        val = (double)ival;
+        return true;
+    }
+
+    return false;
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
 inline bool enifGetVector2f(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2f& v)
 {
     unsigned int len;
@@ -104,11 +176,11 @@ inline bool enifGetVector2f(ErlNifEnv* env, ERL_NIF_TERM list, sf::Vector2f& v)
     ERL_NIF_TERM item;
     double val;
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     v.x = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     v.y = val;
 
     return true;
@@ -186,7 +258,7 @@ inline ERL_NIF_TERM enifMakeVector2u(ErlNifEnv* env, sf::Vector2u& v)
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-inline ERL_NIF_TERM enifGetRecti(ErlNifEnv* env, ERL_NIF_TERM list, sf::IntRect& r)
+inline bool enifGetRecti(ErlNifEnv* env, ERL_NIF_TERM list, sf::IntRect& r)
 {
     unsigned int len;
     if (!enif_is_list(env, list)
@@ -198,19 +270,19 @@ inline ERL_NIF_TERM enifGetRecti(ErlNifEnv* env, ERL_NIF_TERM list, sf::IntRect&
     ERL_NIF_TERM item;
     int val;
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_int(env, item, &val);
+    enifGetInt(env, item, val);
     r.left = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_int(env, item, &val);
+    enifGetInt(env, item, val);
     r.top = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_int(env, item, &val);
+    enifGetInt(env, item, val);
     r.width = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_int(env, item, &val);
+    enifGetInt(env, item, val);
     r.height = val;
 
     return true;
@@ -243,7 +315,7 @@ inline ERL_NIF_TERM enifMakeRecti(ErlNifEnv* env, sf::IntRect& r)
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-inline ERL_NIF_TERM enifGetRectf(ErlNifEnv* env, ERL_NIF_TERM list, sf::FloatRect& r)
+inline bool enifGetRectf(ErlNifEnv* env, ERL_NIF_TERM list, sf::FloatRect& r)
 {
     unsigned int len;
     if (!enif_is_list(env, list)
@@ -255,19 +327,19 @@ inline ERL_NIF_TERM enifGetRectf(ErlNifEnv* env, ERL_NIF_TERM list, sf::FloatRec
     ERL_NIF_TERM item;
     double val;
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     r.left = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     r.top = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     r.width = val;
 
     enif_get_list_cell(env, list, &item, &list);
-    enif_get_double(env, item, &val);
+    enifGetDouble(env, item, val);
     r.height = val;
 
     return true;
@@ -300,7 +372,7 @@ inline ERL_NIF_TERM enifMakeRectf(ErlNifEnv* env, sf::FloatRect& r)
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-inline ERL_NIF_TERM enifGetColor(ErlNifEnv* env, ERL_NIF_TERM term, sf::Color& color)
+inline bool enifGetColor(ErlNifEnv* env, ERL_NIF_TERM term, sf::Color& color)
 {
     unsigned int len;
 
