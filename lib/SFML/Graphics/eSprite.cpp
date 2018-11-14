@@ -355,7 +355,7 @@ ERL_NIF_TERM sfSpriteSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
     }
 
     double angle;
-    if (!enif_get_double(env, argv[1], &angle)) {
+    if (!enifGetDouble(env, argv[1], angle)) {
         return enif_make_badarg(env);
     }
 
@@ -499,7 +499,7 @@ ERL_NIF_TERM sfSpriteRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
     }
 
     double angle;
-    if (!enif_get_double(env, argv[1], &angle)) {
+    if (!enifGetDouble(env, argv[1], angle)) {
         return enif_make_badarg(env);
     }
 
