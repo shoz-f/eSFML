@@ -7,6 +7,7 @@ add_library(GraphicsNIF
     eRenderWindow.cpp
     eSprite.cpp
     eTexture.cpp
+    eTransformable.cpp
     ${EXTRA_SRCS}
     )
 

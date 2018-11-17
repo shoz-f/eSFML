@@ -21,9 +21,9 @@ defmodule SFML.Graphics.Sprite do
   defdelegate set_scale(s, factors),     to: NIF, as: :sprite_set_scale
   defdelegate get_color(s),              to: NIF, as: :sprite_get_color
   defdelegate set_color(s, color),       to: NIF, as: :sprite_set_color
-  defdelegate move(s, delta),            to: NIF, as: :transformable_move
-  defdelegate rotate(s, angle),          to: NIF, as: :transformable_rotate
-  defdelegate scale(s, factor),          to: NIF, as: :transformable_scale
+  defdelegate move(s, delta),            to: NIF, as: :sprite_move
+  defdelegate rotate(s, angle),          to: NIF, as: :sprite_rotate
+  defdelegate scale(s, factor),          to: NIF, as: :sprite_scale
   defdelegate flip(s),                   to: NIF, as: :sprite_flip
   defdelegate get_global_bounds(s),      to: NIF, as: :sprite_get_global_bounds
 end
