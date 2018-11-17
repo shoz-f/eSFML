@@ -18,7 +18,6 @@ static ErlNifFunc nif_funcs[] = {
     { "clock_release",              1, sfClockRelease            },
     { "clock_get_elapsed_time",     1, sfClockGetElapsedTime     },
     { "clock_restart",              1, sfClockRestart            },
-//    { "clock_interval",             2, sfClockInterval           },
     { "gclock_get_elapsed_time",    0, sfGClockGetElapsedTime    },
     { "gclock_restart",             0, sfGClockRestart           },
 };
