@@ -21,38 +21,8 @@
 /*** CONSTANT ***/
 
 /*** TYPE DEF ***/
-/***  Class Header  *******************************************************}}}*/
-/**
-* <<タイトル記入>>
-* @par 解説
-*   <<解説記入>>
-**/
-/**************************************************************************{{{*/
-class eSprite :public sf::Sprite {
-    //CONSTANT:
-public:
 
-    //LIFECYCLE:
-public:
-    eSprite();
-    virtual ~eSprite();
-
-    //ACTION:
-public:
-    void keepTextureRes(void* r);
-    void releaseTextureRes();
-
-    //ACCESSOR:
-
-    //INQUIRY:
-    void* getTextureRes();
-
-    //ATTRIBUTE:
-protected:
-    void* mTextrueRes;
-};
-
-typedef NifResChild<eSprite, ResDrawable> ResSprite;
+typedef NifResChild<sf::Sprite, ResDrawable> ResSprite;
 
 /*** MACRO ***/
 

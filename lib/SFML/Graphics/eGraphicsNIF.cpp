@@ -9,6 +9,7 @@
 #include "eConvexShape.h"
 #include "eSprite.h"
 #include "eTexture.h"
+#include "eTransformable.h"
 
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
@@ -88,6 +89,11 @@ static ErlNifFunc nif_funcs[] = {
                                                                               
     { "texture_load_from_file",             1, sfTextureLoadFromFile            },
     { "texture_get_size",                   1, sfTextureGetSize                 },
+
+    { "transformable_move",                 2, sfTransformableMove              },
+    { "transformable_rotate",               2, sfTransformableRotate            },
+    { "transformable_scale",                2, sfTransformableScale             },
+
 };
 
 ERL_NIF_INIT(Elixir.SFML.Graphics.NIF, nif_funcs, load, NULL, NULL, NULL);

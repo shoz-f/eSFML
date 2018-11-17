@@ -78,4 +78,8 @@ defmodule SFML.Graphics.NIF do
                                                  
   def texture_load_from_file(_a),                do: raise "NIF texture_load_from_file/1 not implemented"
   def texture_get_size(_a),                      do: raise "NIF texture_get_size/1 not implemented"
+
+  def transformable_move(_a, _b),                do: raise "NIF transformable_move/2 not implemented"
+  def transformable_rotate(_a, _b),              do: raise "NIF transformable_rotate/2 not implemented"
+  def transformable_scale(_a, _b),               do: raise "NIF transformable_scale/2 not implemented"
 end

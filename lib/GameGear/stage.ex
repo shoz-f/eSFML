@@ -24,6 +24,7 @@ defmodule GameGear.Stage do
     """
     def discard(%{win: w}) do
       RenderWindow.destroy(w)
+      :ok
     end
   
     @doc """

@@ -55,7 +55,6 @@ class NifRes {
 //SETUP:
 public:
     static ErlNifResourceType* _ResType;
-    static char*               _Name;
 
     static void _destructor(ErlNifEnv* env, void* ptr)
     {
@@ -74,8 +73,6 @@ public:
 //LIFECYCLE:
 public:
     NifRes(ErlNifEnv* env) : mEnv(env) {}
-
-    virtual ~NifRes() {}
 
 //ACTION:
 private:
@@ -146,8 +143,6 @@ public:
 template <typename T, bool isAbstruct>
 ErlNifResourceType* NifRes<T,isAbstruct>::_ResType = 0;
 
-template <typename T, bool isAbstruct>
-char*               NifRes<T,isAbstruct>::_Name = 0;
 
 /***  Class Header  *******************************************************}}}*/
 /**
@@ -171,8 +166,6 @@ public:
     : SUPER(env)
     {}
 
-    virtual ~NifResChild() {}
-
 //ACTION:
 protected:
     virtual void AllocObj()
@@ -193,6 +186,55 @@ public:
 public:
 
 //ATTRIBUTE:
+public:
+    T* mObj;    ///< SFML object pointer
+};
+
+/***  Class Header  *******************************************************}}}*/
+/**
+* NIFs resouce wrapper for derived class objects
+* @par DESCRIPTION
+*   <<解説記入>>
+* @par EXAMPLE
+*
+* @see
+**/
+/**************************************************************************{{{*/
+template<typename T, typename GROUP>
+class NifResMixIn {
+
+//CONSTANT:
+public:
+
+//LIFECYCLE:
+public:
+    NifResMixIn(ErlNifEnv* env)
+    : mEnv(env)
+    {}
+
+//ACTION:
+public:
+    bool Open(ERL_NIF_TERM term)
+    {
+        T** res;         ///< NIFs resource pointer
+        if (enif_get_resource(mEnv, term, GROUP::_ResType, (void**)&res)) {
+            mObj = *res;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+//ACCESSOR:
+public:
+
+//INQUIRY:
+public:
+
+//ATTRIBUTE:
+protected:
+    ErlNifEnv* mEnv;
 public:
     T* mObj;    ///< SFML object pointer
 };

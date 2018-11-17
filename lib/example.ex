@@ -167,8 +167,8 @@ defmodule Galaxy do
     actor = Actor.create([400.0, 400.0], 0.0, 0.0, :galaxy)
               |> Actor.scale([2.0, 2.0])
 
-    load_bgm()
-    JukeBox.play(:jupiter)
+#    load_bgm()
+#    JukeBox.play(:jupiter)
 
     until_loop = fn
       (true, _, _) ->
@@ -180,7 +180,7 @@ defmodule Galaxy do
     end
     until_loop.(false, [actor], until_loop)
     
-    JukeBox.stop(:jupiter)
+#    JukeBox.stop(:jupiter)
     Stage.discard(stage)
     :ok
   end

@@ -34,70 +34,6 @@
 
 /***  Module Header  ******************************************************}}}*/
 /**
-* Constructor
-* @par description
-*   instantiate the object
-**/
-/*************************************************************************{{{*/
-eSprite::eSprite()
-:mTextrueRes(NULL)
-{
-    // empty
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* Destructor
-* @par description
-*   destroy the object
-**/
-/*************************************************************************{{{*/
-eSprite::~eSprite()
-{
-    releaseTextureRes();
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* Keep Texture resource
-* @par description
-*   increment reference counter
-**/
-/*************************************************************************{{{*/
-void eSprite::keepTextureRes(void* r)
-{
-    enif_keep_resource(r);
-    mTextrueRes = r;
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* Release Texture resource
-* @par description
-*   decrement reference counter
-**/
-/*************************************************************************{{{*/
-void eSprite::releaseTextureRes()
-{
-    enif_release_resource(mTextrueRes);
-    mTextrueRes = NULL;
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* Return Texture resource
-* @par description
-*   return the texture resource
-**/
-/*************************************************************************{{{*/
-void* eSprite::getTextureRes()
-{
-    return mTextrueRes;
-}
-
-
-/***  Module Header  ******************************************************}}}*/
-/**
 * <タイトル記入>
 * @par 解説
 *   <<解説記入>>
@@ -117,7 +53,6 @@ ERL_NIF_TERM sfSpriteCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
         return enif_make_badarg(env);
     }
 
-    res.mObj->keepTextureRes(texture.mRes);
     res.mObj->setTexture(*texture.mObj);
 
     return res.MkTerm();
@@ -144,9 +79,7 @@ ERL_NIF_TERM sfSpriteClone(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
         return enif_make_badarg(env);
     }
 
-    clone.mObj->keepTextureRes(org.mObj->getTextureRes());
     clone.mObj->setTexture(*org.mObj->getTexture());
-    clone.mObj->setTextureRect(org.mObj->getTextureRect());
     clone.mObj->setPosition(org.mObj->getPosition());
     clone.mObj->setColor(org.mObj->getColor());
 
