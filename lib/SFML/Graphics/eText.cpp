@@ -1,6 +1,6 @@
 /***  File Header  ************************************************************/
 /**
-* @file eCircleShape.cpp
+* @file eText.cpp
 *
 * <<タイトル記入>>
 * @author	Shozo Fukuda
@@ -15,8 +15,8 @@
 
 /***** INCLUDE *****/
 #include "stdafx.h"
-#include "eTexture.h"
-#include "eCircleShape.h"
+#include "eFont.h"
+#include "eText.h"
 
 /***** CONSTANT *****/
 
@@ -41,14 +41,27 @@
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ErlNifBinary bin;
+    if (!enif_inspect_binary(env, argv[0], &bin)) {
+        return enif_make_badarg(env);
+    }
+    std::string text((const char*)bin.data, bin.size);
+
+    ResFont font(env);
+    if (!font.Open(argv[1])) {
+        return enif_make_badarg(env);
+    }
     
+    ResText res(env);
     if (!res.Create()) {
         return enif_make_badarg(env);
     }
     
+    res.mObj->setString(text);
+    res.mObj->setFont(*font.mObj);
+
     return res.MkTerm();
 }
 
@@ -61,10 +74,9 @@ ERL_NIF_TERM sfCircleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
-    
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -83,21 +95,20 @@ ERL_NIF_TERM sfCircleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetCharacterSize(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
-    
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
-    
-    double radius;
-    if (!enif_get_double(env, argv[1], &radius)) {
+
+    unsigned int size;
+    if (!enifGetUint(env, argv[1], size)) {
         return enif_make_badarg(env);
     }
-    
-    res.mObj->setRadius((float)radius);
-    
+
+    res.mObj->setCharacterSize(size);
+
     return argv[0];
 }
 
@@ -110,45 +121,21 @@ ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetRasius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetLetterSpacing(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
 
-    return enif_make_double(env, res.mObj->getRadius());
-}
-
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetPoint(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
+    double spacingFactor;
+    if (!enifGetDouble(env, argv[1], spacingFactor)) {
         return enif_make_badarg(env);
     }
 
-    unsigned int count = res.mObj->getPointCount();
+    res.mObj->setLetterSpacing(spacingFactor);
 
-    ERL_NIF_TERM list = enif_make_list(env, 0);
-    ERL_NIF_TERM item;
-    sf::Vector2f point;
-    while (count > 0) {
-        point = res.mObj->getPoint(--count);
-        item  = enifMakeVector2f(env, point);
-        list  = enif_make_list_cell(env, item, list);
-    }
-    
-    return list;
+    return argv[0];
 }
 
 /***  Module Header  ******************************************************}}}*/
@@ -160,9 +147,87 @@ ERL_NIF_TERM sfCircleShapeGetPoint(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetLineSpacing(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+
+    double spacingFactor;
+    if (!enifGetDouble(env, argv[1], spacingFactor)) {
+        return enif_make_badarg(env);
+    }
+
+    res.mObj->setLineSpacing(spacingFactor);
+
+    return argv[0];
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfTextSetStyle(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResText res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+
+    unsigned int style;
+    if (!enifGetUint(env, argv[1], style)) {
+        return enif_make_badarg(env);
+    }
+
+    res.mObj->setStyle(style);
+
+    return argv[0];
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfTextSetColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResText res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+
+    sf::Color color;
+    if (!enifGetColor(env, argv[1], color)) {
+        return enif_make_badarg(env);
+    }
+
+    res.mObj->setColor(color);
+
+    return argv[0];
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfTextGetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -179,9 +244,9 @@ ERL_NIF_TERM sfCircleShapeGetOutlineThickness(ErlNifEnv* env, int argc, const ER
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -205,82 +270,9 @@ ERL_NIF_TERM sfCircleShapeSetOutlineThickness(ErlNifEnv* env, int argc, const ER
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
-        return enif_make_badarg(env);
-    }
-
-    ResTexture texture(env);
-    if (!texture.Open(argv[1])) {
-        return enif_make_badarg(env);
-    }
-
-    res.mObj->setTexture(texture.mObj);
-
-    return argv[0];
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
-        return enif_make_badarg(env);
-    }
-
-    sf::IntRect rect;
-    if (!enifGetRecti(env, argv[1], rect)) {
-        return enif_make_badarg(env);
-    }
-
-    res.mObj->setTextureRect(rect);
-
-    return argv[0];
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
-        return enif_make_badarg(env);
-    }
-
-    sf::IntRect rect = res.mObj->getTextureRect();
-
-    return enifMakeRecti(env, rect);
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -298,9 +290,9 @@ ERL_NIF_TERM sfCircleShapeGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -324,9 +316,9 @@ ERL_NIF_TERM sfCircleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -344,9 +336,9 @@ ERL_NIF_TERM sfCircleShapeGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -370,9 +362,9 @@ ERL_NIF_TERM sfCircleShapeSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -390,9 +382,9 @@ ERL_NIF_TERM sfCircleShapeGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -416,9 +408,9 @@ ERL_NIF_TERM sfCircleShapeSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -436,9 +428,9 @@ ERL_NIF_TERM sfCircleShapeGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -462,9 +454,9 @@ ERL_NIF_TERM sfCircleShapeSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -482,9 +474,9 @@ ERL_NIF_TERM sfCircleShapeGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NI
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -508,9 +500,9 @@ ERL_NIF_TERM sfCircleShapeSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NI
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -528,9 +520,9 @@ ERL_NIF_TERM sfCircleShapeGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_T
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -554,9 +546,9 @@ ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_T
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -580,9 +572,9 @@ ERL_NIF_TERM sfCircleShapeMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -606,9 +598,9 @@ ERL_NIF_TERM sfCircleShapeRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -632,57 +624,9 @@ ERL_NIF_TERM sfCircleShapeScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM arg
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfTextGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
-        return enif_make_badarg(env);
-    }
-
-    sf::IntRect r = res.mObj->getTextureRect();
-    r.left  += r.width;
-    r.width *= -1;
-    res.mObj->setTextureRect(r);
-
-    return argv[0];
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeFlop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
-    if (!res.Open(argv[0])) {
-        return enif_make_badarg(env);
-    }
-
-    sf::IntRect r = res.mObj->getTextureRect();
-    r.top    += r.height;
-    r.height *= -1;
-    res.mObj->setTextureRect(r);
-
-    return argv[0];
-}
-
-/***  Module Header  ******************************************************}}}*/
-/**
-* <タイトル記入>
-* @par 解説
-*   <<解説記入>>
-*
-* @retval <<戻り値記入>> <<戻り値説明記入>>
-**/
-/**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    ResCircleShape res(env);
+    ResText res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -692,4 +636,4 @@ ERL_NIF_TERM sfCircleShapeGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NI
     return enifMakeRectf(env, rect);
 }
 
-/***  End of eCircleShape.cpp  *************************************************}}}*/
+/***  End of eText.cpp  *************************************************}}}*/

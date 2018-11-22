@@ -1,6 +1,6 @@
 /***  File Header  ************************************************************/
 /**
-* @file eTexture.h
+* @file eFont.h
 *
 * <<タイトル記入>>
 * @author	Shozo Fukuda
@@ -12,8 +12,8 @@
 *
 **/
 /**************************************************************************{{{*/
-#ifndef _ETEXTURE_H
-#define _ETEXTURE_H
+#ifndef _EFONT_H
+#define _EFONT_H
 
 /*** IMPORT ***/
 #include <SFML/Graphics.hpp>
@@ -22,7 +22,7 @@
 /*** CONSTANT ***/
 
 /*** TYPE DEF ***/
-typedef NifRes<sf::Texture> ResTexture;
+typedef NifRes<sf::Font> ResFont;
 
 /*** MACRO ***/
 
@@ -32,7 +32,6 @@ typedef NifRes<sf::Texture> ResTexture;
 
 /*** EXPORT FUNCTION ***/
 
-DECL_NIF(sfTextureLoadFromFile);
-DECL_NIF(sfTextureGetSize);
+DECL_NIF(sfFontLoadFromFile);
 
 #endif  // _ETEXT_H

@@ -21,7 +21,6 @@
 /*** CONSTANT ***/
 
 /*** TYPE DEF ***/
-
 typedef NifResChild<sf::ConvexShape, ResDrawable> ResConvexShape;
 
 /*** MACRO ***/
@@ -69,12 +68,3 @@ DECL_NIF(sfConvexShapeFlop);
 DECL_NIF(sfConvexShapeGetGlobalBounds);
 
 #endif // _ECONVEXSHAPE_H
-
-/*
-const Texture * 	getTexture () const
- 	Get the source texture of the shape. More...
- 
-FloatRect 	getLocalBounds () const
- 	Get the local bounding rectangle of the entity. More...
- 
-*/

@@ -2,12 +2,14 @@ add_library(GraphicsNIF
     SHARED
     eGraphicsNIF.cpp
     eCircleShape.cpp
+    eRectangleShape.cpp
     eConvexShape.cpp
     eEvent.cpp
     eRenderWindow.cpp
     eSprite.cpp
     eTexture.cpp
-    eTransformable.cpp
+    eText.cpp
+    eFont.cpp
     ${EXTRA_SRCS}
     )
 

@@ -1,6 +1,6 @@
 /***  File Header  ************************************************************/
 /**
-* @file eCircleShape.cpp
+* @file eRectangleShape.cpp
 *
 * <<タイトル記入>>
 * @author	Shozo Fukuda
@@ -16,7 +16,7 @@
 /***** INCLUDE *****/
 #include "stdafx.h"
 #include "eTexture.h"
-#include "eCircleShape.h"
+#include "eRectangleShape.h"
 
 /***** CONSTANT *****/
 
@@ -41,9 +41,9 @@
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     
     if (!res.Create()) {
         return enif_make_badarg(env);
@@ -61,9 +61,9 @@ ERL_NIF_TERM sfCircleShapeCreate(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
@@ -83,20 +83,20 @@ ERL_NIF_TERM sfCircleShapeDestroy(ErlNifEnv* env, int argc, const ERL_NIF_TERM a
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetSize(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
-    
-    double radius;
-    if (!enif_get_double(env, argv[1], &radius)) {
+
+    sf::Vector2f size(0.0, 0.0);
+    if (!enifGetVector2f(env, argv[1], size)) {
         return enif_make_badarg(env);
     }
-    
-    res.mObj->setRadius((float)radius);
+
+    res.mObj->setSize(size);
     
     return argv[0];
 }
@@ -110,14 +110,15 @@ ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetRasius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetSize(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
 
-    return enif_make_double(env, res.mObj->getRadius());
+    sf::Vector2f size = res.mObj->getSize();
+    return enifMakeVector2f(env, size);
 }
 
 
@@ -130,9 +131,9 @@ ERL_NIF_TERM sfCircleShapeGetRasius(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetPoint(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetPoint(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -160,9 +161,9 @@ ERL_NIF_TERM sfCircleShapeGetPoint(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -179,9 +180,9 @@ ERL_NIF_TERM sfCircleShapeGetOutlineThickness(ErlNifEnv* env, int argc, const ER
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetOutlineThickness(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -205,9 +206,9 @@ ERL_NIF_TERM sfCircleShapeSetOutlineThickness(ErlNifEnv* env, int argc, const ER
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -231,9 +232,9 @@ ERL_NIF_TERM sfCircleShapeSetTexture(ErlNifEnv* env, int argc, const ERL_NIF_TER
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -257,9 +258,9 @@ ERL_NIF_TERM sfCircleShapeSetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -278,9 +279,9 @@ ERL_NIF_TERM sfCircleShapeGetTextureRect(ErlNifEnv* env, int argc, const ERL_NIF
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -298,9 +299,9 @@ ERL_NIF_TERM sfCircleShapeGetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -324,9 +325,9 @@ ERL_NIF_TERM sfCircleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -344,9 +345,9 @@ ERL_NIF_TERM sfCircleShapeGetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -370,9 +371,9 @@ ERL_NIF_TERM sfCircleShapeSetPosition(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -390,9 +391,9 @@ ERL_NIF_TERM sfCircleShapeGetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -416,9 +417,9 @@ ERL_NIF_TERM sfCircleShapeSetRotation(ErlNifEnv* env, int argc, const ERL_NIF_TE
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -436,9 +437,9 @@ ERL_NIF_TERM sfCircleShapeGetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -462,9 +463,9 @@ ERL_NIF_TERM sfCircleShapeSetScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -482,9 +483,9 @@ ERL_NIF_TERM sfCircleShapeGetOutlineColor(ErlNifEnv* env, int argc, const ERL_NI
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -508,9 +509,9 @@ ERL_NIF_TERM sfCircleShapeSetOutlineColor(ErlNifEnv* env, int argc, const ERL_NI
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -528,9 +529,9 @@ ERL_NIF_TERM sfCircleShapeGetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_T
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -554,9 +555,9 @@ ERL_NIF_TERM sfCircleShapeSetFillColor(ErlNifEnv* env, int argc, const ERL_NIF_T
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -580,9 +581,9 @@ ERL_NIF_TERM sfCircleShapeMove(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -606,9 +607,9 @@ ERL_NIF_TERM sfCircleShapeRotate(ErlNifEnv* env, int argc, const ERL_NIF_TERM ar
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -632,9 +633,9 @@ ERL_NIF_TERM sfCircleShapeScale(ErlNifEnv* env, int argc, const ERL_NIF_TERM arg
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -656,9 +657,9 @@ ERL_NIF_TERM sfCircleShapeFlip(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeFlop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeFlop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -680,9 +681,9 @@ ERL_NIF_TERM sfCircleShapeFlop(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfRectangleShapeGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    ResCircleShape res(env);
+    ResRectangleShape res(env);
     if (!res.Open(argv[0])) {
         return enif_make_badarg(env);
     }
@@ -692,4 +693,4 @@ ERL_NIF_TERM sfCircleShapeGetGlobalBounds(ErlNifEnv* env, int argc, const ERL_NI
     return enifMakeRectf(env, rect);
 }
 
-/***  End of eCircleShape.cpp  *************************************************}}}*/
+/***  End of eRectangleShape.cpp  *************************************************}}}*/
