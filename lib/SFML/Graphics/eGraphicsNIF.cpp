@@ -10,6 +10,8 @@
 #include "eConvexShape.h"
 #include "eSprite.h"
 #include "eTexture.h"
+#include "eText.h"
+#include "eFont.h"
 #include "eTransformable.h"
 
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
@@ -141,8 +143,36 @@ static ErlNifFunc nif_funcs[] = {
     { "sprite_flop",                           1, sfSpriteFlop                        },
     { "sprite_get_global_bounds",              1, sfSpriteGetGlobalBounds             },
 
+    { "text_create",                           2, sfTextCreate                        },
+    { "text_destroy",                          1, sfTextDestroy                       },
+    { "text_set_character_size",               2, sfTextSetCharacterSize              },
+    { "text_set_letter_spacing",               2, sfTextSetLetterSpacing              },
+    { "text_set_line_spacing",                 2, sfTextSetLineSpacing                },
+    { "text_set_style",                        2, sfTextSetStyle                      },
+    { "text_set_color",                        2, sfTextSetColor                      },
+    { "text_get_outline_thickness",            1, sfTextGetOutlineThickness           },
+    { "text_set_outline_thickness",            2, sfTextSetOutlineThickness           },
+    { "text_get_origin",                       1, sfTextGetOrigin                     },
+    { "text_set_origin",                       2, sfTextSetOrigin                     },
+    { "text_get_position",                     1, sfTextGetPosition                   },
+    { "text_set_position",                     2, sfTextSetPosition                   },
+    { "text_get_rotation",                     1, sfTextGetRotation                   },
+    { "text_set_rotation",                     2, sfTextSetRotation                   },
+    { "text_get_scale",                        1, sfTextGetScale                      },
+    { "text_set_scale",                        2, sfTextSetScale                      },
+    { "text_get_outline_color",                1, sfTextGetOutlineColor               },
+    { "text_set_outline_color",                2, sfTextSetOutlineColor               },
+    { "text_get_fill_color",                   1, sfTextGetFillColor                  },
+    { "text_set_fill_color",                   2, sfTextSetFillColor                  },
+    { "text_move",                             2, sfTextMove                          },
+    { "text_rotate",                           2, sfTextRotate                        },
+    { "text_scale",                            2, sfTextScale                         },
+    { "text_get_global_bounds",                1, sfTextGetGlobalBounds               },
+
     { "texture_load_from_file",                1, sfTextureLoadFromFile               },
     { "texture_get_size",                      1, sfTextureGetSize                    },
+
+    { "font_load_from_file",                   1, sfFontLoadFromFile                  },
 
     // { "transformable_move",                 2, sfTransformableMove              },
     // { "transformable_rotate",               2, sfTransformableRotate            },
