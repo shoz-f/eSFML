@@ -2,6 +2,7 @@ add_library(GraphicsNIF
     SHARED
     eGraphicsNIF.cpp
     eCircleShape.cpp
+    eRectangleShape.cpp
     eConvexShape.cpp
     eEvent.cpp
     eRenderWindow.cpp
