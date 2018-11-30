@@ -21,6 +21,7 @@
 #include <map>
 #include <string>
 #include <cstring>
+#include <limits.h>
 #include "NifRes.h"
 
 /***** CONSTANT *****/
@@ -99,7 +100,7 @@ inline bool enifGetInt(ErlNifEnv* env, ERL_NIF_TERM term, int& val)
     }
 
     double dval;
-    if (enif_get_double(env, term, &dval) && dval >= MININT && dval <= MAXINT) {
+    if (enif_get_double(env, term, &dval) && dval >= INT_MIN && dval <= INT_MAX) {
         val = (int)dval;
         return true;
     }
@@ -123,7 +124,7 @@ inline bool enifGetUint(ErlNifEnv* env, ERL_NIF_TERM term, unsigned int& val)
     }
 
     double dval;
-    if (enif_get_double(env, term, &dval) && dval >= 0.0 && dval <= MAXUINT) {
+    if (enif_get_double(env, term, &dval) && dval >= 0.0 && dval <= UINT_MAX) {
         val = (int)dval;
         return true;
     }
