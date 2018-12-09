@@ -15,6 +15,7 @@ defmodule SFML.Graphics.NIF do
   def render_window_destroy(_a),                    do: raise "NIF render_window_destroy/1 not implemented"
   def render_window_clear(_a, _b),                  do: raise "NIF render_window_clear/1 not implemented"
   def render_window_draw(_a, _b),                   do: raise "NIF render_window_draw/2 not implemented"
+  def render_window_draw_vertices(_a, _b, _c),      do: raise "NIF render_window_draw_vertices/3 not implemented"
   def render_window_set_framerate_limit(_a, _b),    do: raise "NIF render_window_set_framerate_limit/2 not implemented"
   def render_window_display(_a),                    do: raise "NIF render_window_display/1 not implemented"
   def render_window_get_size(_a),                   do: raise "NIF render_window_get_size/1 not implemented"

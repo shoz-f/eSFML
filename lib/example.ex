@@ -1,4 +1,4 @@
-alias SFML.Graphics.{Sprite}
+alias SFML.Graphics.{Sprite, Vertex, RenderWindow}
 alias SFML.System.{Clock,Vector2}
 alias GameGear.{Stage,Bullet,NWayDann,MintDann,Judge,TextureBox,JukeBox,TurtleGeo}
 
@@ -251,5 +251,22 @@ defmodule TestMint do
     MintDann.discard(launch)
     Stage.discard(stage)
     :ok
+  end
+end
+
+
+defmodule TestVertices do
+  def run() do
+    triangle = [
+      %Vertex{position: [ 10.0,  10.0], color: :Red  },
+      %Vertex{position: [100.0,  10.0], color: :Blue },
+      %Vertex{position: [100.0, 100.0], color: :Green}
+    ]
+
+    win = RenderWindow.create([480,320], "Vertices")
+    
+    RenderWindow.clear(win, :Black)
+    RenderWindow.draw(win, triangle, :Triangles)
+    RenderWindow.display(win)
   end
 end

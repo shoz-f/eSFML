@@ -17,6 +17,7 @@
 #include "stdafx.h"
 #include <SFML/System/Vector2.hpp>
 #include "eDrawable.h"
+#include <vector>
 #include "eRenderWindow.h"
 
 /***** CONSTANT *****/
@@ -405,6 +406,96 @@ ERL_NIF_TERM sfRenderWindowRequestFocus(ErlNifEnv* env, int argc, const ERL_NIF_
 ERL_NIF_TERM sf::eRenderWindow::fxRequestForcus(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     requestFocus();
+
+    return argv[0];
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+ERL_NIF_TERM sfRenderWindowDrawVertexArray(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    ResRenderWindow res(env);
+    if (!res.Open(argv[0])) {
+        return enif_make_badarg(env);
+    }
+    sf::eRenderWindow* win = res.mObj;
+
+    return win->call(&sf::eRenderWindow::fxDrawVertexArray, env, argc, argv);
+}
+
+bool _prepare_vertex_keys = false;
+static ERL_NIF_TERM _keyPosition;
+static ERL_NIF_TERM _keyColor;
+static ERL_NIF_TERM _keyTexture;
+
+inline void prepareVertexKeys(ErlNifEnv* env)
+{
+  if (!_prepare_vertex_keys) {
+    // prepare key-Atoms for getting Vertex
+    _keyPosition = enif_make_atom(env, "position");
+    _keyColor    = enif_make_atom(env, "color");
+    _keyTexture  = enif_make_atom(env, "texture");
+    _prepare_vertex_keys = true;
+  }
+}
+
+inline bool enifGetVertex(ErlNifEnv* env, const ERL_NIF_TERM map, sf::Vertex& vertex)
+{
+    ERL_NIF_TERM position;
+    ERL_NIF_TERM color;
+    ERL_NIF_TERM tex_coords;
+    return enif_get_map_value(env, map, _keyPosition, &position)
+         && enif_get_map_value(env, map, _keyColor, &color)
+         && enif_get_map_value(env, map, _keyTexture, &tex_coords)
+         && enifGetVector2f(env, position, vertex.position)
+         && enifGetColor(env, color, vertex.color)
+         && enifGetVector2f(env, tex_coords, vertex.texCoords);
+}
+
+bool enifGetVertexArray(ErlNifEnv* env, ERL_NIF_TERM list, unsigned int len, std::vector<sf::Vertex>& vertices)
+{
+    prepareVertexKeys(env);
+
+    ERL_NIF_TERM map;
+    sf::Vertex  vertex;
+    for (int i = 0; i < len; i++) {
+        if (enif_get_list_cell(env, list, &map, &list)
+        &&  enifGetVertex(env, map, vertex)) {
+          vertices.push_back(vertex);
+        }
+        else {
+          return enif_make_badarg(env);
+        }
+    }
+    return true;
+}
+
+ERL_NIF_TERM sf::eRenderWindow::fxDrawVertexArray(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    unsigned int len;
+    std::vector<sf::Vertex> vertices;
+    if (!enif_is_list(env, argv[1])
+    ||  !enif_get_list_length(env, argv[1], &len)
+    ||  len == 0
+    ||  !enifGetVertexArray(env, argv[1], len, vertices)) {
+        return enif_make_badarg(env);
+    }
+
+    sf::PrimitiveType type;
+    if (!enifGetPrimitiveType(env, argv[2], type)) {
+        return enif_make_badarg(env);
+    }
+    
+    int n = vertices.size();
+
+    draw(&vertices[0], vertices.size(), type);
 
     return argv[0];
 }
