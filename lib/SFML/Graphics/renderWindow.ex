@@ -5,6 +5,7 @@ defmodule SFML.Graphics.RenderWindow do
   defdelegate destroy(w),                    to: NIF, as: :render_window_destroy
   defdelegate clear(w, color \\ :Black),     to: NIF, as: :render_window_clear
   defdelegate draw(w, entity),               to: NIF, as: :render_window_draw
+  defdelegate draw(w, vertices, primitive),  to: NIF, as: :render_window_draw_vertices
   defdelegate set_framerate_limit(w, limit), to: NIF, as: :render_window_set_framerate_limit
   defdelegate display(w),                    to: NIF, as: :render_window_display
   defdelegate get_size(w),                   to: NIF, as: :render_window_get_size

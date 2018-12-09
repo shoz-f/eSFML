@@ -29,6 +29,7 @@ static ErlNifFunc nif_funcs[] = {
     { "render_window_destroy",                 1, sfRenderWindowDestroy               },
     { "render_window_clear",                   2, sfRenderWindowClear                 },
     { "render_window_draw",                    2, sfRenderWindowDraw                  },
+    { "render_window_draw_vertices",           3, sfRenderWindowDrawVertexArray       },
     { "render_window_set_framerate_limit",     2, sfRenderWindowSetFramerateLimit     },
     { "render_window_display",                 1, sfRenderWindowDisplay               },
     { "render_window_get_size",                1, sfRenderWindowGetSize               },

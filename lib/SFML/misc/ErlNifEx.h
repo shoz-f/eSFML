@@ -37,6 +37,17 @@ const std::map<std::string, sf::Color> cColorMap = {
     { "Transparent", sf::Color::Transparent },
 };
 
+
+const std::map<std::string, sf::PrimitiveType> cPrimitiveTypeMap = {
+    { "Points",        sf::Points        },
+    { "Lines",         sf::Lines         },
+    { "LineStrip",     sf::LineStrip     },
+    { "Triangles",     sf::Triangles     },
+    { "TriangleStrip", sf::TriangleStrip },
+    { "TriagnelFan",   sf::TriangleFan   },
+    { "Quads",         sf::Quads         },
+};
+
 /***** TYPE *****/
 
 /***** MACRO *****/
@@ -426,6 +437,36 @@ inline ERL_NIF_TERM enifMakeColor(ErlNifEnv* env, sf::Color& color)
         enif_make_uint(env, color.b),
         enif_make_uint(env, color.a));
 }
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline bool enifGetPrimitiveType(ErlNifEnv* env, ERL_NIF_TERM term, sf::PrimitiveType& type)
+{
+    unsigned int len;
+
+    if (enif_is_atom(env, term)) {
+        char name[256];
+        enif_get_atom(env, term, name, sizeof(name), ERL_NIF_LATIN1);
+        try {
+            type = cPrimitiveTypeMap.at(name);
+        }
+        catch (std::out_of_range&) {
+            return false;
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 
 #endif
 /*** End of ErlNifEx.h *************************************************}}}*/
