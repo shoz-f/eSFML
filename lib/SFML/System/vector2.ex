@@ -52,4 +52,21 @@ defmodule SFML.System.Vector2 do
   def equal([ax, ay], [bx, by]) do
     (ax == bx) && (ay == by)
   end
+
+  @doc """
+  内積
+  """
+  @spec dot([number], [number]) :: number
+  def dot([ax, ay], [bx, by]) do
+    ax*bx + ay*by
+  end
+  
+  @doc """
+  直交ベクトル(時計回り)
+  """
+  @spec orthogonal([number]) :: [number]
+  def orthogonal([ax, ay]) do
+    [ay, -ax]
+  end
+  
 end

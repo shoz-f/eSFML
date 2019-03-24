@@ -1,8 +1,8 @@
 alias SFML.Graphics.RenderWindow
 
-alias GameGear.Stage
+alias GameGear.Screen
 
-defmodule GameGear.Stage do
+defmodule GameGear.Screen do
     @moduledoc """
     描画オブジェクトを描画するステージ
     """
@@ -12,7 +12,7 @@ defmodule GameGear.Stage do
     ステージを作成
     """
     def create([_width, _height] = size, title, color) do
-      %Stage{
+      %Screen{
         win: RenderWindow.create(size, title)
              |> RenderWindow.set_framerate_limit(120),
         bg:  color
@@ -39,13 +39,6 @@ defmodule GameGear.Stage do
       RenderWindow.poll_event(w)
     end
   
-    @doc """
-    ステージの中と外の境界を返す: [left,top,right,bottom]
-    """
-    def border(%{win: w}) do
-      [0.0, 0.0] ++ RenderWindow.get_size(w)
-    end
-    
     @doc """
     ステージを更新する
     """

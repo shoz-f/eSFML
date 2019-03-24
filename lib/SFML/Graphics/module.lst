@@ -1,0 +1,39 @@
+	class  	sf::BlendMode
+x	class  	sf::CircleShape
+x	class  	sf::Color
+x	class  	sf::ConvexShape
+x	class  	sf::Drawable
+x	class  	sf::Font
+-	class  	sf::Glyph
+	class  	sf::Image
+x	class  	sf::Rect< T >
+x	class  	sf::RectangleShape
+	class  	sf::RenderStates
+	class  	sf::RenderTarget
+	class  	sf::RenderTexture
+x	class  	sf::RenderWindow
+	class  	sf::Shader
+	class  	sf::Shape
+x	class  	sf::Sprite
+x	class  	sf::Text
+x	class  	sf::Texture
+	class  	sf::Transform
+-	class  	sf::Transformable
+	class  	sf::Vertex
+	class  	sf::VertexArray
+	class  	sf::VertexBuffer
+	class  	sf::View
+
+enum  	sf::PrimitiveType { 
+  sf::Points,
+  sf::Lines,
+  sf::LineStrip,
+  sf::Triangles, 
+  sf::TriangleStrip,
+  sf::TriangleFan,
+  sf::Quads,
+  sf::LinesStrip = LineStrip, 
+  sf::TrianglesStrip = TriangleStrip,
+  sf::TrianglesFan = TriangleFan 
+}
+ 	Types of primitives that a sf::VertexArray can render. More...
