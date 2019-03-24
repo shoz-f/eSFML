@@ -1,13 +1,14 @@
-alias SFML.Graphics.{Sprite, Vertex, RenderWindow}
+alias SFML.Graphics.{Sprite, CircleShape, Vertex, RenderWindow}
 alias SFML.System.{Clock,Vector2}
 alias GameGear.{Stage,Bullet,NWayDann,MintDann,Judge,TextureBox,JukeBox,TurtleGeo}
+alias Gravite.{Body}
 
 
 defmodule Actor do
   @moduledoc """
   描画オブジェクト
   """
-  defstruct sprite: nil, speed: 1.0, velocity: [1.0, 0.0], alive: false, color: nil
+  defstruct body: nil, speed: 1.0, velocity: [1.0, 0.0], alive: false, color: nil
 
   @actor __MODULE__
 
@@ -27,7 +28,7 @@ defmodule Actor do
     dir = :math.fmod(dir, 360.0)
     left_pointing? = (dir > 90.0 && dir < 270.0)
     %Actor{
-      sprite:   TextureBox.get(img, @actor)
+      body:   TextureBox.get(img, @actor)
                 |> Sprite.create()
                 |> Sprite.set_origin(:center)
                 |> Sprite.set_position(pos)
@@ -50,7 +51,7 @@ defmodule Actor do
       flip?   = ovx*cvx < 0.0
     do
       %Actor{
-        sprite:   Sprite.clone(org.sprite)
+        body:   Sprite.clone(org.body)
                   |> (&if flip? do Sprite.flip(&1) else &1 end).()
                   |> (&if color do Sprite.set_color(&1, color) else &1 end).(),
         velocity: v
@@ -60,7 +61,7 @@ defmodule Actor do
   
   @doc """
   """
-  def scale(%Actor{sprite: s} = a, factor) do
+  def scale(%Actor{body: s} = a, factor) do
     Sprite.scale(s, factor)
     a
   end
@@ -68,7 +69,7 @@ defmodule Actor do
   @doc """
   テクスチャと左右の動きを反転させる。
   """
-  def flip(%Actor{sprite: s, velocity: [x, y]} = p) do
+  def flip(%Actor{body: s, velocity: [x, y]} = p) do
     Sprite.flip(s)
     %Actor{p | velocity: [-x, y]}
   end
@@ -93,6 +94,65 @@ defmodule Actor do
         TurtleGeo.backward(actor, step) |> flop
       {_, :corner, step} ->
         TurtleGeo.backward(actor, step) |> flip |> flop
+    end
+  end
+end
+
+
+defmodule Comet do
+  @moduledoc """
+  描画オブジェクト
+  """
+  defstruct body: nil, speed: 1.0, velocity: [1.0, 0.0], alive: false, color: nil
+
+  @doc """
+  オブジェクトを作成する
+  """
+  def create([_x, _y] = pos, speed, dir) do
+    dir = :math.fmod(dir, 360.0)
+    left_pointing? = (dir > 90.0 && dir < 270.0)
+    %Comet{
+      body:   CircleShape.create()
+                |> CircleShape.set_radius(2.0)
+                |> CircleShape.set_position(pos),
+      speed:    speed,
+      velocity: [speed*:math.cos(:math.pi*dir/180.0),
+                 speed*:math.sin(:math.pi*dir/180.0)],
+      alive:    true
+    }
+  end
+
+  @doc """
+  左右の動きを反転させる。
+  """
+  def flip(%Comet{velocity: [x, y]} = p) do
+    %Comet{p | velocity: [-x, y]}
+  end
+
+  @doc """
+  上下の動きを反転させる
+  """
+  def flop(%Comet{velocity: [x, y]} = p) do
+    %Comet{p | velocity: [x, -y]}
+  end
+  
+
+  @doc """
+  オブジェクトの状態・動きを更新する
+  """
+  def update(%Comet{body: s, velocity: [vx,vy]} = comet, time, overrun?) do
+    CircleShape.move(s, [vx,vy])
+    case overrun?.(comet) do
+      {:inside, _, _} -> comet
+      {_, :x, step} ->
+        CircleShape.move(s, [-vx, -vy])
+        comet |> flip
+      {_, :y, step} ->
+        CircleShape.move(s, [-vx, -vy])
+        comet |> flop
+      {_, :corner, step} ->
+        CircleShape.move(s, [-vx, -vy])
+        comet |> flip |> flop
     end
   end
 end
@@ -149,6 +209,29 @@ defmodule WalkingPenguin do
         loop.(Stage.keypressed?(stage, 36), actors, loop)
     end
     until_loop.(false, [actor], until_loop)
+
+    Stage.discard(stage)
+    :ok
+  end
+end
+
+defmodule FlyingComet do
+  def run() do
+    stage = Stage.create([800, 600], "Flying Comet!", [200,150,150])
+    comet = Comet.create([400.0, 300.0], 2.0, 5.0)
+
+    overrun? = &Judge.overrun2?(&1, Stage.border(stage))
+
+    until_loop = fn
+      (true, _, _) ->
+        :ok
+      (false, comets, loop)  ->
+        Stage.update(stage, comets)
+        comets = Enum.map(comets, &Comet.update(&1, 2, overrun?))
+
+        loop.(Stage.keypressed?(stage, 36), comets, loop)
+    end
+    until_loop.(false, [comet], until_loop)
 
     Stage.discard(stage)
     :ok
@@ -266,7 +349,12 @@ defmodule TestVertices do
     win = RenderWindow.create([480,320], "Vertices")
     
     RenderWindow.clear(win, :Black)
-    RenderWindow.draw(win, triangle, :Triangles)
+    RenderWindow.drawvertex(win, triangle, :Triangles)
     RenderWindow.display(win)
+  end
+end
+
+defmodule Orbit do
+  def run() do
   end
 end
