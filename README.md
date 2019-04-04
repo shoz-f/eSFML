@@ -1,4 +1,4 @@
-# SFML binding in Elixir (experimental)
+# SFML binding in Elixir
 
 ## What is this?
 This is Elixir binding of SFML - Simple and Fast Multimedia Library.
