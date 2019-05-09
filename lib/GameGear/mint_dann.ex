@@ -9,7 +9,7 @@ defmodule GameGear.MintDann do
     {:ok, pid} = Agent.start_link(fn -> %MintDann{} end)
     pid
   end
-  
+
   def discard(pid) do
     Agent.stop(pid)
   end
@@ -21,6 +21,7 @@ defmodule GameGear.MintDann do
     end
   end
 
+  @spec shot(atom() | pid() | {atom(), any()} | {:via, atom(), any()}, [...]) :: [any()]
   def shot(pid, [_x,_y]=pos) do
     case Agent.get(pid, &(&1)) do
     %{interval: count = 50, dir: dir, rot: rot} ->

@@ -18,7 +18,7 @@ defmodule GameGear.Stage do
         bg:  color
       }
     end
-  
+
     @doc """
     ステージを破棄
     """
@@ -26,26 +26,26 @@ defmodule GameGear.Stage do
       RenderWindow.destroy(w)
       :ok
     end
-  
+
     @doc """
     """
     def keypressed?(%{win: w}, val) do
       RenderWindow.poll_event(w) == {:keypressed, val}
     end
-  
+
     @doc """
     """
     def poll_event(%{win: w}) do
       RenderWindow.poll_event(w)
     end
-  
+
     @doc """
     ステージの中と外の境界を返す: [left,top,right,bottom]
     """
     def border(%{win: w}) do
       [0.0, 0.0] ++ RenderWindow.get_size(w)
     end
-    
+
     @doc """
     ステージを更新する
     """
@@ -55,4 +55,3 @@ defmodule GameGear.Stage do
       RenderWindow.display(w)
     end
 end
-  

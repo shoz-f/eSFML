@@ -164,7 +164,22 @@ defmodule SFML.Graphics.NIF do
 
   def font_load_from_file(_a),                      do: raise "NIF font_load_from_file/1 not implemented"
 
+  def vertex_deque_create(_1),                      do: raise "NIF sfVertexDequeCreate/1 not implemented"
+  def vertex_deque_destroy(_1),                     do: raise "NIF sfVertexDequeDestroy/1 not implemented"
+  def vertex_deque_get_count(_1),                   do: raise "NIF sfVertexDequeGetCount/1 not implemented"
+  def vertex_deque_set_pos(_1,_2,_3),               do: raise "NIF sfVertexDequeSetVertexPosition/3 not implemented"
+  def vertex_deque_set_color(_1,_2,_3),             do: raise "NIF sfVertexDequeSetVertexColor/3 not implemented"
+  def vertex_deque_get(_1,_2),                      do: raise "NIF sfVertexDequeGetVertex/2 not implemented"
+  def vertex_deque_clear(_1),                       do: raise "NIF sfVertexDequeClear/1 not implemented"
+  def vertex_deque_resize(_1,_2),                   do: raise "NIF sfVertexDequeResize/2 not implemented"
+  def vertex_deque_push(_1,_2),                     do: raise "NIF sfVertexDequePush/2 not implemented"
+  def vertex_deque_set_primitive_type(_1,_2),       do: raise "NIF sfVertexDequeSetPrimitiveType/2 not implemented"
+  def vertex_deque_get_primitive_type(_1),          do: raise "NIF sfVertexDequeGetPrimitiveType/1 not implemented"
+
 #  def transformable_move(_a, _b),                do: raise "NIF transformable_move/2 not implemented"
 #  def transformable_rotate(_a, _b),              do: raise "NIF transformable_rotate/2 not implemented"
 #  def transformable_scale(_a, _b),               do: raise "NIF transformable_scale/2 not implemented"
+end
+
+defmodule SFML.Graphics do
 end

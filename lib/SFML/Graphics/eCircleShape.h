@@ -34,7 +34,7 @@ typedef NifResChild<sf::CircleShape, ResDrawable> ResCircleShape;
 DECL_NIF(sfCircleShapeCreate);
 DECL_NIF(sfCircleShapeDestroy);
 DECL_NIF(sfCircleShapeSetRadius);
-DECL_NIF(sfCircleShapeGetRasius);
+DECL_NIF(sfCircleShapeGetRadius);
 DECL_NIF(sfCircleShapeGetPoint);
 DECL_NIF(sfCircleShapeGetOutlineThickness);
 DECL_NIF(sfCircleShapeSetOutlineThickness);

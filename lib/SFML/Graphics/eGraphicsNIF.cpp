@@ -12,6 +12,7 @@
 #include "eTexture.h"
 #include "eText.h"
 #include "eFont.h"
+#include "eVertexDeque.h"
 #include "eTransformable.h"
 
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
@@ -39,7 +40,7 @@ static ErlNifFunc nif_funcs[] = {
 
     { "circle_shape_create",                   0, sfCircleShapeCreate                 },
     { "circle_shape_destroy",                  1, sfCircleShapeDestroy                },
-    { "circle_shape_get_radius",               1, sfCircleShapeGetRasius              },
+    { "circle_shape_get_radius",               1, sfCircleShapeGetRadius              },
     { "circle_shape_set_radius",               2, sfCircleShapeSetRadius              },
     { "circle_shape_get_point",                1, sfCircleShapeGetPoint               },
     { "circle_shape_get_outline_thickness",    1, sfCircleShapeGetOutlineThickness    },
@@ -174,6 +175,19 @@ static ErlNifFunc nif_funcs[] = {
     { "texture_get_size",                      1, sfTextureGetSize                    },
 
     { "font_load_from_file",                   1, sfFontLoadFromFile                  },
+    
+    { "vertex_deque_create",                   1, sfVertexDequeCreate                 },
+    { "vertex_deque_destroy",                  1, sfVertexDequeDestroy                },
+    { "vertex_deque_get_count",                1, sfVertexDequeGetCount               },
+    { "vertex_deque_set_pos",                  3, sfVertexDequeSetVertexPosition      },
+    { "vertex_deque_set_color",                3, sfVertexDequeSetVertexColor         },
+    { "vertex_deque_get",                      2, sfVertexDequeGetVertex              },
+    { "vertex_deque_clear",                    1, sfVertexDequeClear                  },
+    { "vertex_deque_resize",                   2, sfVertexDequeResize                 },
+    { "vertex_deque_push",                     2, sfVertexDequePush                   },
+    { "vertex_deque_set_primitive_type",       2, sfVertexDequeSetPrimitiveType       },
+    { "vertex_deque_get_primitive_type",       1, sfVertexDequeGetPrimitiveType       },
+
 
     // { "transformable_move",                 2, sfTransformableMove              },
     // { "transformable_rotate",               2, sfTransformableRotate            },
