@@ -8,7 +8,7 @@ defmodule Gravite.Queue do
   def filter(queue, fun), do: :queue.filter(fun, queue)
 
   def split(queue, n) do
-    length = Queue.length(queue)
+    length = Gravite.Queue.length(queue)
 
     if length >= n do
       :queue.split(n, queue)

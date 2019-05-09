@@ -1,5 +1,7 @@
 defmodule Gravite.Particle do
 
+  alias Gravite.{Particle}
+
   defstruct [
     mass:     1.0,
     pos:      [0.0, 0.0],
@@ -15,7 +17,7 @@ defmodule Gravite.Particle do
   def combination(list) do
     combination_sub(Enum.reverse(list))
   end
-  
+
   def combination_sub([]) do
     []
   end

@@ -467,6 +467,44 @@ inline bool enifGetPrimitiveType(ErlNifEnv* env, ERL_NIF_TERM term, sf::Primitiv
     }
 }
 
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline ERL_NIF_TERM enifMakePrimitiveType(ErlNifEnv* env, sf::PrimitiveType type)
+{
+    switch (type) {
+    case sf::Points       : return enif_make_atom(env, "Points");
+    case sf::Lines        : return enif_make_atom(env, "Lines");
+    case sf::LineStrip    : return enif_make_atom(env, "LineStrip");
+    case sf::Triangles    : return enif_make_atom(env, "Triangles");
+    case sf::TriangleStrip: return enif_make_atom(env, "TriangleStrip");
+    case sf::TriangleFan  : return enif_make_atom(env, "TriagnelFan");
+    case sf::Quads        : return enif_make_atom(env, "Quads");
+    }
+    return NIL(env);
+}
+
+/***  Module Header  ******************************************************}}}*/
+/**
+* <タイトル記入>
+* @par 解説
+*   <<解説記入>>
+*
+* @retval <<戻り値記入>> <<戻り値説明記入>>
+**/
+/**************************************************************************{{{*/
+inline ERL_NIF_TERM enifMakeVertex(ErlNifEnv* env, sf::Vector2f& v, sf::Color& color)
+{
+    return enif_make_list2(env,
+        enifMakeVector2f(env, v),
+        enifMakeColor(env, color));
+}
 
 #endif
 /*** End of ErlNifEx.h *************************************************}}}*/

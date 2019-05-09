@@ -7,6 +7,10 @@ defmodule GameGear.Judge do
 
   @eps 1.0e-10
 
+  defprotocol GlobalBounds do
+    def get_global_bounds(s)
+  end
+
   @doc """
   [xmin,ymin,xmax,ymax]の矩形範囲をはみ出た場合は、オブジェクトに反転を指示する
   """

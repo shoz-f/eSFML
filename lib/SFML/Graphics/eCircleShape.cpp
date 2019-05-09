@@ -110,7 +110,7 @@ ERL_NIF_TERM sfCircleShapeSetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM
 * @retval <<戻り値記入>> <<戻り値説明記入>>
 **/
 /**************************************************************************{{{*/
-ERL_NIF_TERM sfCircleShapeGetRasius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM sfCircleShapeGetRadius(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     ResCircleShape res(env);
     if (!res.Open(argv[0])) {
@@ -305,12 +305,12 @@ ERL_NIF_TERM sfCircleShapeSetOrigin(ErlNifEnv* env, int argc, const ERL_NIF_TERM
         return enif_make_badarg(env);
     }
 
-    sf::Vector2f org(0.0, 0.0);
-    if (!enifGetVector2f(env, argv[1], org)) {
+    sf::Vector2f position(0.0, 0.0);
+    if (!enifGetVector2f(env, argv[1], position)) {
         return enif_make_badarg(env);
     }
 
-    res.mObj->setOrigin(org);
+    res.mObj->setOrigin(position);
 
     return argv[0];
 }

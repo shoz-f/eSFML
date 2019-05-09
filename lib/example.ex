@@ -1,4 +1,4 @@
-alias SFML.Graphics.{Sprite, CircleShape, Vertex, RenderWindow}
+alias SFML.Graphics.{Sprite, CircleShape, Vertex, VertexDeque, RenderWindow}
 alias SFML.System.{Clock,Vector2}
 alias GameGear.{Stage,Bullet,NWayDann,MintDann,Judge,TextureBox,JukeBox,TurtleGeo}
 alias Gravite.{Body}
@@ -351,6 +351,23 @@ defmodule TestVertices do
     RenderWindow.clear(win, :Black)
     RenderWindow.drawvertex(win, triangle, :Triangles)
     RenderWindow.display(win)
+  end
+end
+
+defmodule TestVertexDeque do
+  def run() do
+    vd = VertexDeque.create(5)
+           |> VertexDeque.set_primitive_type(:LineStrip)
+           |> VertexDeque.push([10,20])
+           |> VertexDeque.push([50,80])
+           |> VertexDeque.push([40,100])
+
+    win = RenderWindow.create([480,320], "VertexDeque")
+    
+    RenderWindow.clear(win, :Black)
+    RenderWindow.draw(win, vd)
+    RenderWindow.display(win)
+    
   end
 end
 

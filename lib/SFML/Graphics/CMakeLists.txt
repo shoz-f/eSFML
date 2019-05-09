@@ -10,6 +10,8 @@ add_library(GraphicsNIF
     eTexture.cpp
     eText.cpp
     eFont.cpp
+    VertexDeque.cpp
+    eVertexDeque.cpp
     ${EXTRA_SRCS}
     )
 
